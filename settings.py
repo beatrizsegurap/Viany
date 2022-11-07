@@ -38,6 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'usuario.apps.UsuarioConfig',
+    'itinerario.apps.ItinerarioConfig',
+    'hospedaje.apps.HospedajeConfig',
+    'transporte.apps.TransporteConfig',
+    'actividades.apps.ActividadesConfig',
+    'gastronomia.apps.GastronomiaConfig',
+    'checklist.apps.ChecklistConfig',
+    'presupuesto.apps.PresupuestoConfig',
     'bootstrap4',
 ]
 

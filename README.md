@@ -3,7 +3,7 @@
 
 
 Password DB ROOT: 5R27We0jxx1?
-DB Admin: 6Y99Kv4lda=20
+Password DB Admin: 6Y99Kv4lda=20
 
 Para iniciar el servidor en el entorno virtual, entrar a la carpeta proyecto viany e iniciar comando
 
@@ -11,3 +11,6 @@ Para iniciar el servidor en el entorno virtual, entrar a la carpeta proyecto via
 
 abrir en el navegador
 http://127.0.0.1:8000/
+
+User administrador: adminViany
+password: h56j19ianw
