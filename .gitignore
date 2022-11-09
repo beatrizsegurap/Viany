@@ -1,0 +1,5 @@
+#Ignora las carpetas y archivo de configuracion del entorno virtual
+Include
+Lib
+Scripts
+pyvenv.cfg
