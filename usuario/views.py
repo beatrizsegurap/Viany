@@ -20,6 +20,13 @@ def login(request):
             messages.success(request, 'Los datos ingresados no son correctos')
     return render(request, 'login.html')
 
+def cerrarSesion(request):
+    try:
+        del request.session['nombre_usuario']
+    except:
+        return render(request, 'index.html')
+    return render(request, 'index.html')
+
 def dashboarduser(request):
     return render(request, 'dashboard-user.html')
 
