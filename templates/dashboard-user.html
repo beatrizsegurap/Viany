@@ -16,6 +16,10 @@
         <a class="navbar-brand" href="#">
           <img src="../static/assets/logo-white.png" alt="Viany" width="80" height="80">
         </a>
+        {% if request.session.nombre_usuario %}
+        {{ request.session.nombre_usuario }} &nbsp;&nbsp; <a href="{% url 'home' %}" >Cerrar sesion</a>
+        {% else %}
+       <p>Este es el dashboard</p>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navegacion">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,10 +50,6 @@
 
     
 
-    {% if request.session.nombre_usuario %}
-    {{ request.session.nombre_usuario }} &nbsp;&nbsp; <a href="{% url 'home' %}" >Cerrar sesion</a>
-    {% else %}
-   <p>Este es el dashboard</p>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

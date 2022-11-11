@@ -3,6 +3,7 @@ from .forms import FormRegisterUser, FormLoginUser
 from django.http import HttpResponse
 from django.contrib import messages
 from .models import usuario
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index (request):
@@ -35,10 +36,18 @@ def dashboarduser(request):
 def signup(request):
     form = FormRegisterUser(request.POST or None)
     if form.is_valid():
-        form.save()		
-        messages.success(request, 'Usuario registrado exitosamente.')
-        form = FormRegisterUser()
+        if User.objects.filter(email=form.data.get('correo_usuario')).exists():
+            messages.error(request,'El email ya ha sido registrado')
+        elif User.objects.filter(username=form.data.get('nombre_cuenta_usuario')).exists():
+            messages.error(request,'El nombre de usuario no está disponible')
+        else:
+            form.save()		
+            user = User.objects.create_user(form.data.get('nombre_cuenta_usuario'),form.data.get('correo_usuario'),form.data.get('contraseña_usuario'))
+            messages.success(request, 'Usuario registrado exitosamente.')
+            form = FormRegisterUser()
+            
     else:
         messages.error(request, 'Error al registrar usuario.')
     context = {'form': form }      
     return render(request, 'sign-up.html', context)
+    
