@@ -25,7 +25,7 @@ def cerrarSesion(request):
     try:
         del request.session['nombre_usuario']
     except:
-        return render(request, 'index.html')
+        pass
     return render(request, 'index.html')
 
 def dashboarduser(request):
