@@ -11,4 +11,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('dashboard-user/', views.dashboarduser, name='dashboarduser'),
     path('cerrarsesion/', views.cerrarSesion, name='cerrarsesion'),
+    path('hospedaje/', include('hospedaje.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
