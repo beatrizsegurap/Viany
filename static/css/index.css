@@ -339,3 +339,17 @@ a.article:hover {
 .exit{
     color: white;
 }
+
+#bottom-var tr th {
+    color: white;
+    background-color: #7DA31C;
+}
+
+#bottom-var tr th.active {
+    background-color: #026E04;
+}
+
+.titled{
+    color:#096D5B;
+    align-items: center;
+}
