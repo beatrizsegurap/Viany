@@ -3,6 +3,7 @@ from django.db import models
 from unittest.util import _MAX_LENGTH
 from django.contrib.auth.models import User
 from usuario.models import usuario
+from .cities import REGIONES_CHILE,PROVINCIAS_CHILE,COMUNAS_CHILE
 
 class itinerario(models.Model):
     id_itinerario =  models.AutoField(primary_key=True)

@@ -19,7 +19,6 @@ from Viany import views
 
 urlpatterns = [
     path('admin', admin.site.urls),
-    path('itinerario/', include('itinerario.urls')),
     path('', include('usuario.urls')),
 ]
 

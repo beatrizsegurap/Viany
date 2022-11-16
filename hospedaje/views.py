@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def hospedaje (request):
     return render(request,'hospedaje.html')
+
+def agregarHospedaje (request):
+    return render(request,'agregar-hospedaje.html')

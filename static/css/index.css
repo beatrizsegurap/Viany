@@ -74,6 +74,37 @@ nav li{
     width:190px;
     height:70px;
 }
+.superior{
+    position: absolute;
+    top: 20%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    background: #E0282A;
+    border-radius: 12%;
+    border-color: #E0282A;
+    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    color: white;
+    font-size: 12px;
+    width:170px;
+    height:50px;
+}
+
+.inferior{
+    position: absolute;
+    top: 83%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    background: #E0282A;
+    border-radius: 12%;
+    border-color: #E0282A;
+    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    color: white;
+    font-size: 12px;
+    width:170px;
+    height:50px;
+}
 
 .modal-title{
     color: #026E04;
@@ -256,6 +287,7 @@ table{
     background: #0C947B;
     color: #fff;
     transition: all 0.3s;
+    padding-bottom: 340px;
 }
 
 #sidebar.active {
@@ -343,6 +375,7 @@ a.article:hover {
 #bottom-var tr th {
     color: white;
     background-color: #7DA31C;
+    border-radius: 3px;
 }
 
 #bottom-var tr th.active {
@@ -351,5 +384,29 @@ a.article:hover {
 
 .titled{
     color:#096D5B;
-    align-items: center;
+    padding-left: 50%;
+    position:relative;
+}
+
+.tabla{
+    color:#096D5B;
+    padding-bottom: 43%;
+}
+
+.titulo-tabla{
+    padding-top:30px;
+}
+
+.agregar{
+    padding-left: 30%;
+    padding-top: 3%;
+}
+
+.info-select{
+    padding-top: 90px;
+    color:#096D5B
+}
+.rejilla{
+    color:#096D5B;
+    margin-left: 300px;
 }
