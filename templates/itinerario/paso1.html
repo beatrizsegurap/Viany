@@ -62,13 +62,14 @@
             </div>
         </div>
         <div class="col py-3">
-            <form action="dash2">
+            <form action="paso2" method="post">
+                {% csrf_token %}
             <div class="row">
                 <div class="col-md-8">
                     Ponle un nombre a tu itinerario <br>
                     <input type="text" placeholder="Nombre"><br>
                     ¿Desde donde inicias tu viaje? <label><input type="checkbox"> Usar Geolocalización</label><br>
-                    <input type="text" placeholder="Ingresa tu Dirección"><br>
+                    <input type="text" placeholder="Ingresa tu Dirección de Origen"><br>
                     Ingresa la Fecha de Inicio de tu viaje<br>
                     <input type="date">
                 </div>
