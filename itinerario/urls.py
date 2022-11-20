@@ -1,11 +1,13 @@
-from django.urls import path, include
-from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import path
 
+from . import ItiViews
 
 urlpatterns = [
-    path('', views.dash, name='dash'),
-    path('dash2/', views.dash2, name='dash2')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('', ItiViews.dash),
+                  path('paso2', ItiViews.dash2),
+                  path('resumen', ItiViews.resumen),
+                  path('listar', ItiViews.listar),
+                  path('escanear', ItiViews.escanear)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
