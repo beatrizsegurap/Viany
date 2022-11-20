@@ -17,8 +17,8 @@ def resumen(request):
 
 
 def escanear(request):
-    return HttpResponse("ESCANEAR")
+    return render(request, 'itinerario/escanear.html')
 
 
 def listar(request):
-    return HttpResponse("LISTAR")
+    return render(request, 'itinerario/listar.html')
