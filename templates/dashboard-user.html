@@ -64,8 +64,19 @@
         </ul>
     </nav>
 
+    <div>
+      Explora destinos, actividades y vuelos para inspirarte
+    </div>
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+<button type="button" class="btn btn-secondary btn-lg">Large button</button>
+    <div>
+      {{ request.session.nombre_usuario}}, planifiquemos tu viaje
+      <button type="button" class="centrado" data-toggle="modal" data-target="#IniciarSesion"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+      </svg>   Crear Itinerario</button>
+    </div>
 
-    
+
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
