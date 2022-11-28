@@ -8,6 +8,15 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def index (request):
+    if request.method == 'POST':
+        try:
+            acceso = usuario.objects.get(correo_usuario = request.POST['correo_usuario'],contraseña_usuario = request.POST['contraseña_usuario'])
+            print("usuario=",acceso.nombre_usuario)
+            request.session['correo_usuario']=acceso.correo_usuario
+            request.session['nombre_usuario']=acceso.nombre_usuario
+            return render(request, 'dashboard-user.html')
+        except usuario.DoesNotExist as e:
+            messages.success(request, 'Los datos ingresados no son correctos')
     return render(request,'index.html')
 
 def login(request):

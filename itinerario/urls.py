@@ -2,12 +2,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from . import ItiViews
+from . import views
 
 urlpatterns = [
-                  path('', ItiViews.listar),
-                  path('paso2', ItiViews.dash2),
-                  path('resumen', ItiViews.resumen),
-                  path('nuevo', ItiViews.dash),
-                  path('escanear', ItiViews.escanear)
+                  path('', views.listar),
+                  path('paso2', views.agregarDestinos,name="agregardestinos"),
+                  path('resumen', views.resumen,name="resumen"),
+                  path('nuevo', views.crearItinerario,name="newItinerario"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

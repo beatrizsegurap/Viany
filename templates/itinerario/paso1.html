@@ -11,61 +11,63 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light menu">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="static/assets/logo-white.png" alt="Viany" width="80" height="80">
-        </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navegacion">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-          <div id="navegacion" class="collapse navbar-collapse nav nav-stacked justify-content-end">
-            <ul  class="navbar-nav ms-3">
-              <li  class="nav-item"><a href="{% url 'login' %}" class="nav-link"><h5><strong>Iniciar Sesión</strong></h5></a></li>
-              <li class="nav-item"><button class="register"><a href="{% url 'signup' %}" class="nav-link"><h5><strong>Registrate</strong></h5></a></li></button>
-            </ul>
-          </div>
-      </div>
-    </nav>
-
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Inicio</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/itinerario/nuevo" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Crear Itinerario</span> </a>
-                    </li>
-                    <li>
-                        <a href="/itinerario/" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Mis Itinerarios</span></a>
-                    </li>
-                    <li>
-                        <a href="/recomendaciones" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Recomendaciones</span></a>
-                    </li>
-                    <li>
-                        <a href="/itinerario/escanear" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Escanear Itinerario</span> </a>
-                    </li>
-                </ul>
-
-            </div>
+ <!--Barra superior-->
+ <nav class="navbar navbar-expand-lg navbar-light menu shadow">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <a class="navbar-brand" href="#">
+            <img src="../static/assets/logo-white.png" alt="Viany" width="80" height="80">
+            </a>
         </div>
+        <div class="col navbar-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#2CD4DE" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+            {% if request.session.nombre_usuario %}
+            <span class="navbar-text">
+            <h5 class="nombre">Bienvenido/a {{ request.session.nombre_usuario }} </h5>
+            <h6 class="nombre">Perfil</h6>
+            </span>
+        </div>
+        <div class="col"> 
+            <div class="logout navbar-brand">
+                <svg class="profile" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2CD4DE" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                  </svg>
+                  <a class="exit" href="{% url 'home' %}" >Cerrar sesion</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+</nav>
+
+ <!--Barra lateral izquierda-->
+ <div class="wrapper">
+  <nav id="sidebar" class="">
+    <ul class="list-unstyled components">
+        <li>
+            <a href="{% url 'newItinerario'%}">Inicio</a>
+        </li>
+        <li class="active">
+            <a href="{% url 'dashboarduser'%}">Crear itinerario</a>
+        </li>
+        <li>
+            <a href="#pageSubmenu">Mis itinerarios</a>
+        </li>
+        <li>
+          <a href="#pageSubmenu">Recomendaciones</a>
+      </li>
+    </ul>
+</nav>
         <div class="col py-3">
             <form action="paso2" method="post">
                 {% csrf_token %}
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     Ponle un nombre a tu itinerario <br>
                     <input type="text" placeholder="Nombre"><br>
                     ¿Desde donde inicias tu viaje? <label><input type="checkbox"> Usar Geolocalización</label><br>
