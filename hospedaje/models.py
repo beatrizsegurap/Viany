@@ -4,13 +4,13 @@ from unittest.util import _MAX_LENGTH
 from django.contrib.auth.models import User
 
 
-TIPOS_HOSPEDAJE = (
+TIPOS_HOSPEDAJE = [
         ("CAMPING","Camping"),
         ("HOSTAL","Hostal"),
         ("HOTEL","Hotel"),
         ("DEPARTAMENTO","Departamento"),
         ("CASA","Casa")
-    )
+]
 
 class hospedaje_por_dia(models.Model):
     id_hospedaje =  models.AutoField(primary_key=True)

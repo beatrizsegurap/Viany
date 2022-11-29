@@ -68,12 +68,17 @@
                 {% csrf_token %}
             <div class="row">
                 <div class="col-md-7">
-                    Ponle un nombre a tu itinerario <br>
-                    <input type="text" placeholder="Nombre"><br>
-                    ¿Desde donde inicias tu viaje? <label><input type="checkbox"> Usar Geolocalización</label><br>
-                    <input type="text" placeholder="Ingresa tu Dirección de Origen"><br>
-                    Ingresa la Fecha de Inicio de tu viaje<br>
-                    <input type="date">
+                  <p class="sub-title">Ponle un nombre a tu itinerario <br></p>
+                    <input class='input-itinerario' type="text" name="nombre_itinerario" placeholder="Nombre"><br>
+                    <p class="sub-title">¿Desde donde inicias tu viaje?     <label><input type="checkbox"> Usar Geolocalización</label><br></p>
+                    <input class='input-itinerario' list='comunas'  type="text" placeholder="Ingresa tu Dirección de Origen"><br>
+                    <datalist id='comunas'>
+                      {% for comuna in comunas %}
+                      <option value="{{comuna}}"></option>
+                      {% endfor %}
+                    </datalist>
+                  <p class="sub-title">Ingresa la Fecha de Inicio de tu viaje<br></p>
+                    <input class='input-itinerario' type="date">
                 </div>
                 <div class="col-md-2">
                     <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-147.39257812500003%2C-63.074865690586634%2C0.26367187500000006%2C-3.688855143147035&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=4/-39.30/-73.56">Ver mapa más grande</a></small>

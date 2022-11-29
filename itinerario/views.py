@@ -1,21 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-
-
-
+from .forms import FormCreateItinerario
+from .cities import COMUNAS_CHILE
 # Create your views here.
 
 
 def crearItinerario(request):
-    return render(request, 'itinerario/paso1.html')
+    comunas = COMUNAS_CHILE
+    return render(request, 'itinerario/paso1.html',{'comunas':comunas})
 
 
 
 def agregarDestinos(request):
-    if request.method != 'POST':
-        return redirect('/itinerario/nuevo')
-    return render(request, 'itinerario/paso2.html')
+    comunas = COMUNAS_CHILE
+
+    return render(request, 'itinerario/paso2.html',{'comunas':comunas})
 
 
 def resumen(request):
