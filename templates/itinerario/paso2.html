@@ -50,10 +50,10 @@
   <nav id="sidebar" class="">
     <ul class="list-unstyled components">
         <li>
-            <a href="{% url 'newItinerario'%}">Inicio</a>
+            <a href="{% url 'dashboarduser'%}">Inicio</a>
         </li>
         <li class="active">
-            <a href="{% url 'dashboarduser'%}">Crear itinerario</a>
+            <a href="{% url 'newItinerario'%}">Crear itinerario</a>
         </li>
         <li>
             <a href="#pageSubmenu">Mis itinerarios</a>
@@ -65,32 +65,26 @@
 </nav>
         <form method="post">
             {% csrf_token %}
-        <div class="col py-2">
-            <div class="row">
-                <div class="col-md-12">
-                   <p class="sub-title"> {{ request.session.nombre_usuario}},  ¿hacia dónde vas y cuántos días estarás allí? </p><br>
-                   <ul > 
-                    <li>
-                      <input class='input-destinos' list="comunas" type="text" placeholder="Destino"><input class='input-itinerario' type="number" placeholder="Cantidad de Dias"><button id="agregarSeccion" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#2CD4DE" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                        </svg></button> 
+          <div class="col py-2">
+              <div class="row">
+                  <div class="col-md-12">
+                    <p class="sub-title"> {{ request.session.nombre_usuario}},  ¿hacia dónde vas y cuántos días estarás allí? </p><br>
+                    <ul id="destinos"> 
+                      <li style='list-style:none;'>
+                          <label class="cont">1</label><input name="destino" class='input-destinos' list="comunas" type="text" placeholder="Destino"></input><input class='input-itinerario' name="dia_destino" type="number" placeholder="Cantidad de Dias"></input>
+                          <button id="agregarSeccion" type="button" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#2CD4DE" class="bi bi-plus-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/></svg></button> 
                       </li>
-                        <datalist id='comunas'>
-                          {% for comuna in comunas %}
-                          <option value="{{comuna}}"></option>
-                          {% endfor %}
-                        </datalist>
-                      <li id="destinos"></li>
-                </div>
-
-
-      
-            </div>
-           
-
-        </div>
-        <input style="position: absolute;top: 80%;left:70%;" type="submit" value="Continuar">
-            </form>
+                          <datalist id='comunas'>
+                            {% for comuna in comunas %}
+                            <option value="{{comuna}}"></option>
+                            {% endfor %}
+                          </datalist>
+                    </ul>
+                  </div>
+              </div>
+          </div>
+          <input style="position: absolute;top: 80%;left:70%;" name="paso2" type="submit" value="Continuar" href="{% url 'resumen' %}">
+        </form>
             
     </div>
 </div>
@@ -107,11 +101,18 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+
     <script>
-      $("#agregarSeccion").click(function(event){
-        $("#destinos").load("<a>agregaaaaaaaaa</a>");
+      $(document).ready(function(){
+        var i = 1;
+        $("#agregarSeccion").click(function(){
+            i+=1;
+            $("#destinos").append("<li style='list-style:none;'><label id='num' class='cont'>"+i+"</label><input name='destino' class='input-destinos' list='comunas' type='text' placeholder='Destino'></input><input class='input-itinerario' name='dia_destino' type='number' placeholder='Cantidad de Dias'></input></li>");
+          });
       });
-    </script>
+      </script>
   </body>
 </html>
