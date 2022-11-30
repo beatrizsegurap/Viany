@@ -27,7 +27,7 @@ def agregarDestinos(request):
     if request.method == 'POST':
         formD = FormDestinos(request.POST or None)
         print(request.POST['destino'])
-        return redirect('itinerario/resumen')
+        return redirect('/itinerario/resumen')
 
     return render(request, 'itinerario/paso2.html',{'comunas':comunas})
 
