@@ -64,7 +64,7 @@
     </ul>
 </nav>
         <div class="col py-3">
-            <form method="post">
+            <form method="post" action="#">
                 {% csrf_token %}
             <div class="row">
                 <div class="col-md-7">
@@ -85,7 +85,7 @@
                     <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-147.39257812500003%2C-63.074865690586634%2C0.26367187500000006%2C-3.688855143147035&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=4/-39.30/-73.56">Ver mapa más grande</a></small>
                 </div>
                 </div>
-                <input type="submit" name="paso1" value="Continuar" href="{% url 'agregardestinos' %}">
+                <input type="submit" name="paso1" value="Continuar">
             </form>
 
 

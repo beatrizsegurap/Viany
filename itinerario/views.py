@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template.defaulttags import url
 from django.views.decorators.csrf import csrf_protect
 from .forms import FormCreateItinerario1, FormDestinos
 from .models import itinerario
@@ -15,7 +16,7 @@ def crearItinerario(request):
             form.save()
             print(form.data.get('nombre_itinerario'),form.data.get('ciudad_origen_itinerario'),form.data.get('fecha_inicio_itinerario'))
             form = FormCreateItinerario1()
-            return render(request, 'itinerario/paso2.html',{'comunas':comunas})
+            return redirect('/itinerario/paso2')
   
     return render(request, 'itinerario/paso1.html',{'comunas':comunas})
 
@@ -23,8 +24,6 @@ def crearItinerario(request):
 
 def agregarDestinos(request):
     comunas = COMUNAS_CHILE
-    print("entra????")
-    print(request.POST['destino'])
     if request.method == 'POST':
         formD = FormDestinos(request.POST or None)
         print(request.POST['destino'])
