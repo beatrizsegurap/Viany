@@ -4,13 +4,16 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .models import usuario
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 
 # Create your views here.
 def index (request):
     if request.method == 'POST':
         try:
-            acceso = usuario.objects.get(correo_usuario = request.POST['correo_usuario'],contraseña_usuario = request.POST['contraseña_usuario'])
+            acceso = usuario.objects.get(Q(correo_usuario = request.POST['correo_usuario']) | Q(nombre_cuenta_usuario = request.POST['correo_usuario']),contraseña_usuario = request.POST['contraseña_usuario'])
+
+            print("usuario=",acceso.nombre_usuario)
             request.session['correo_usuario']=acceso.correo_usuario
             request.session['nombre_usuario']=acceso.nombre_usuario
             return render(request, 'dashboard-user.html')
