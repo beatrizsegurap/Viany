@@ -65,10 +65,73 @@
 </nav>
         <div class="col py-3">
             <div class="row">
+                <div class="col-md-12">
+                    <h2>Resumen</h2>
+                </div>
+                <div class="col-md-6">
+                        <h4>Nombre del Itinerario: {{ request.session.nombre_itinerario }}</h4>
+                </div>
+                <div class="col-md-6">
+                    <h4>ID para Compartir: </h4>
+                </div>
 
 
             </div>
 
+
+ <div class="row">
+
+
+        <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+             <div class="row">
+                <table class="table">
+                <tr>
+                      {% for destino, dias in destinos.items %}
+
+                          <td>Destino {{ forloop.counter }}<br>
+                              {% with des=forloop.counter %}
+                          Cantidad de Días: {{ dias }}</td>
+                          {% endwith %}
+                        {% endfor %}
+                </tr><tr>
+                      {% for destino, dias in destinos.items %}
+                                <td>{{ destino }}</td>
+                    {% endfor %}
+                </tr>
+
+                </table>
+             </div></div>
+  <div class="tab-pane fade" id="pills-vuelos" role="tabpanel" aria-labelledby="pills-vuelos-tab">Vuelos y Transporte</div>
+  <div class="tab-pane fade" id="pills-hospedaje" role="tabpanel" aria-labelledby="pills-hospedaje-tab">Hospedaje</div>
+            <div class="tab-pane fade" id="pills-actividades" role="tabpanel" aria-labelledby="pills-actividades-tab">Actividades</div>
+        <div class="tab-pane fade" id="pills-gastronomia" role="tabpanel" aria-labelledby="pills-gastronomia-tab">Gastronomia</div>
+        <div class="tab-pane fade" id="pills-presupuesto" role="tabpanel" aria-labelledby="pills-presupuesto-tab">Presupuesto</div>
+        <div class="tab-pane fade" id="pills-checklist" role="tabpanel" aria-labelledby="pills-checklist-tab">Checklist</div>
+
+</div>
+        </div>
+ <div class="row">
+            <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Resumen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-vuelos-tab" data-toggle="pill" href="#pills-vuelos" role="tab" aria-controls="pills-vuelos" aria-selected="false">Vuelos y Transporte</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-hospedaje-tab" data-toggle="pill" href="#pills-hospedaje" role="tab" aria-controls="pills-hospedaje" aria-selected="false">Hospedaje</a>
+  </li><li class="nav-item">
+    <a class="nav-link" id="pills-actividades-tab" data-toggle="pill" href="#pills-actividades" role="tab" aria-controls="pills-actividades" aria-selected="false">Actividades</a>
+  </li><li class="nav-item">
+    <a class="nav-link" id="pills-gastronomia-tab" data-toggle="pill" href="#pills-gastronomia" role="tab" aria-controls="pills-gastronomia" aria-selected="false">Gastronomia</a>
+  </li><li class="nav-item">
+    <a class="nav-link" id="pills-presupuesto-tab" data-toggle="pill" href="#pills-presupuesto" role="tab" aria-controls="pills-presupuesto" aria-selected="false">Presupuesto</a>
+  </li><li class="nav-item">
+    <a class="nav-link" id="pills-checklist-tab" data-toggle="pill" href="#pills-checklist" role="tab" aria-controls="pills-checklist" aria-selected="false">Checklist</a>
+  </li>
+</ul>
+ </div>
         </div>
     </div>
 </div>
