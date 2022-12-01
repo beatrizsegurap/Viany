@@ -384,7 +384,7 @@ a.article:hover {
 
 .titled{
     color:#096D5B;
-    padding-left: 50%;
+    padding-left: 20%;
     position:relative;
 }
 
@@ -449,4 +449,8 @@ a.article:hover {
     color:#026E04CC;
     margin-bottom: 10px;
     margin-left: 10px;
+}
+
+#nav-inf-act{
+    color: white;
 }

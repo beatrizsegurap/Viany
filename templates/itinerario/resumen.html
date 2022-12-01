@@ -85,19 +85,15 @@
         <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
              <div class="row">
-                <table class="table">
+              <input name="destino[]" class='input-destinos' list="destinos" type="text" placeholder="Destino"></input>
                 <tr>
-                      {% for destino, dias in destinos.items %}
-
-                          <td>Destino {{ forloop.counter }}<br>
-                              {% with des=forloop.counter %}
-                          Cantidad de Días: {{ dias }}</td>
-                          {% endwith %}
-                        {% endfor %}
+                        <datalist id='destinosww'>
+                          {% for comuna in destinos %}
+                          <option value="{{comuna}}"></option>
+                          {% endfor %}
+                        </datalist>
                 </tr><tr>
-                      {% for destino, dias in destinos.items %}
-                                <td>{{ destino }}</td>
-                    {% endfor %}
+
                 </tr>
 
                 </table>
@@ -111,29 +107,31 @@
 
 </div>
         </div>
- <div class="row">
-            <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Resumen</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-vuelos-tab" data-toggle="pill" href="#pills-vuelos" role="tab" aria-controls="pills-vuelos" aria-selected="false">Vuelos y Transporte</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-hospedaje-tab" data-toggle="pill" href="#pills-hospedaje" role="tab" aria-controls="pills-hospedaje" aria-selected="false">Hospedaje</a>
-  </li><li class="nav-item">
-    <a class="nav-link" id="pills-actividades-tab" data-toggle="pill" href="#pills-actividades" role="tab" aria-controls="pills-actividades" aria-selected="false">Actividades</a>
-  </li><li class="nav-item">
-    <a class="nav-link" id="pills-gastronomia-tab" data-toggle="pill" href="#pills-gastronomia" role="tab" aria-controls="pills-gastronomia" aria-selected="false">Gastronomia</a>
-  </li><li class="nav-item">
-    <a class="nav-link" id="pills-presupuesto-tab" data-toggle="pill" href="#pills-presupuesto" role="tab" aria-controls="pills-presupuesto" aria-selected="false">Presupuesto</a>
-  </li><li class="nav-item">
-    <a class="nav-link" id="pills-checklist-tab" data-toggle="pill" href="#pills-checklist" role="tab" aria-controls="pills-checklist" aria-selected="false">Checklist</a>
-  </li>
-</ul>
- </div>
+
+      <!--Barra inferior-->
+<div class="container fixed-bottom" id="bottom-var">
+  <div class="row">
+    <div class="col-md-16">
+        <div class="table">
+          <table class="table users table-hover">
+            <thead>
+              <tr>
+                <th class="active"><a id="nav-inf-act">Resumen</a></th>
+                <th><a href="{% url 'menu-transporte' %}" id="nav-inf-act">Vuelos y transportes</a></th>
+                <th ><a href="{% url 'menu-hospedaje' %}" id="nav-inf-act">Hospedaje</a></th>
+                <th><a href="{% url 'actividad' %}" id="nav-inf-act">Actividades</a></th> 
+                <th><a href="{% url 'gastronomia' %}" id="nav-inf-act">Gastronomía</a></th>
+                <th><a href="{% url 'presupuesto' %}" id="nav-inf-act">Presupuesto</a></th>
+                <th><a href="{% url 'checklist' %}" id="nav-inf-act">CheckList</a></th>                                                                       
+              </tr>                  
+            </thead>
+          </table>  
         </div>
     </div>
+  </div>
+</div>
+    </div>
+</div>
 </div>
 
 

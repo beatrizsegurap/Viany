@@ -15,4 +15,7 @@ urlpatterns = [
     path('itinerario/', include(('itinerario.urls'))),
     path('transporte/', include(('transporte.urls'))),
     path('checklist/', include(('checklist.urls'))),
+     path('presupuesto/', include(('presupuesto.urls'))),
+      path('actividades/', include(('actividades.urls'))),
+       path('gastronomia/', include(('gastronomia.urls'))),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .hospedajes import TIPOS_HOSPEDAJE
 
 # Create your views here.

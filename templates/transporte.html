@@ -30,6 +30,7 @@
                 <h5 class="nombre">Bienvenido/a {{ request.session.nombre_usuario }} </h5>
                 <h6 class="nombre">Perfil</h6>
                 </span>
+                {% endif %}
             </div>
             <div class="col"> 
                 <div class="logout navbar-brand">
@@ -45,10 +46,6 @@
       </div>
     </nav>
   </div>
-  <div class="titled">
-    <div>
-      <h3>Hospedaje</h3>
-    </div>
 
       <!--Barra lateral izquierda-->
     <div class="wrapper fixed-bottom">
@@ -70,39 +67,45 @@
       </nav>
     </div>
 
+    <div class="titled">
+        <h3>Vuelos y transportes</h3>
+      </div>
     <div>
-      <button type="button" href="{% url 'agregarHospedaje' %}" class="superior" >
-        Agregar trasporte
+      <button type="button" class="superior" >
+        <a href="{% url 'agregarTransporte' %}" id="nav-inf-act">Agregar trasporte</a>
       </button>
     </div>
     <div class="tabla">
       <div class="titulo-tabla">
-        <h6>Agrega tus transportes</h6>
+        <h6>Selecciona los datos correspondiente a tu transporte a agregar para buscar recomendaciones</h6>
       </div>
     </div>
 
-    <!--Barra inferior-->
-    <div class="container fixed-bottom" id="bottom-var">
-      <div class="row">
-        <div class="col-md-16">
-            <div class="table">
-              <table class="table users table-hover">
-                <thead>
-                  <tr>
-                    <th>Resumen</th>
-                    <th class="active">Vuelos y transportes</th>
-                    <th>Hospedaje</th>
-                    <th>Actividades</th> 
-                    <th>Gastronomía</th>
-                    <th>Presupuesto</th>
-                    <th>CheckList</th>                                                                       
-                  </tr>                  
-                </thead>
-              </table>  
-            </div>
+<!--Barra inferior-->
+<div class="container fixed-bottom" id="bottom-var">
+  <div class="row">
+    <div class="col-md-16">
+        <div class="table">
+          <table class="table users table-hover">
+            <thead>
+              <tr>
+                <th><a href="{% url 'resumen' %}" id="nav-inf-act">Resumen</a></th>
+                <th class="active"><a href="{% url 'menu-transporte' %}" id="nav-inf-act">Vuelos y transportes</a></th>
+                <th><a href="{% url 'menu-hospedaje' %}" id="nav-inf-act">Hospedaje</a></th>
+                <th><a href="{% url 'actividad' %}" id="nav-inf-act">Actividades</a></th> 
+                <th><a href="{% url 'gastronomia' %}" id="nav-inf-act">Gastronomía</a></th>
+                <th><a href="{% url 'presupuesto' %}" id="nav-inf-act">Presupuesto</a></th>
+                <th><a href="{% url 'checklist' %}" id="nav-inf-act">CheckList</a></th>                                                                       
+              </tr>                  
+            </thead>
+          </table>  
         </div>
-      </div>
     </div>
+  </div>
+</div>
+    </div>
+</div>
+</div>
     
 
     
@@ -115,6 +118,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    {% endif %}
+
   </body>
 </html>
