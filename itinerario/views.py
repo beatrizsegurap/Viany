@@ -22,7 +22,7 @@ def crearItinerario(request):
             request.session['ciudad_origen_itinerario'] = form.data.get('ciudad_origen_itinerario')
             request.session['fecha_inicio_itinerario'] = form.data.get('fecha_inicio_itinerario')
             form = FormCreateItinerario1()
-            return redirect('/itinerario/paso2')
+            return redirect('/itinerario/agregardestinos')
   
     return render(request, 'itinerario/paso1.html',{'comunas':comunas})
 

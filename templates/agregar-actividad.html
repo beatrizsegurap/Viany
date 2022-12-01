@@ -108,13 +108,13 @@ Agregar actividad
                 <table class="table users table-hover">
                   <thead>
                     <tr>
-                      <th>Resumen</th>
-                      <th>Vuelos y transportes</th>
-                      <th>Hospedaje</th>
-                      <th class="active">Actividades</th> 
-                      <th>Gastronomía</th>
-                      <th>Presupuesto</th>
-                      <th>CheckList</th>                                                                       
+                      <th><a href="{% url 'resumen' %}" id="nav-inf-act">Resumen</a></th>
+                      <th><a href="{% url 'menu-transporte' %}" id="nav-inf-act">Vuelos y transportes</a></th>
+                      <th ><a href="{% url 'menu-hospedaje' %}" id="nav-inf-act">Hospedaje</a></th>
+                      <th class="active"><a href="{% url 'actividad' %}" id="nav-inf-act">Actividades</a></th> 
+                      <th><a href="{% url 'gastronomia' %}" id="nav-inf-act">Gastronomía</a></th>
+                      <th><a href="{% url 'presupuesto' %}" id="nav-inf-act">Presupuesto</a></th>
+                      <th><a href="{% url 'checklist' %}" id="nav-inf-act">CheckList</a></th>                                                                       
                     </tr>                  
                   </thead>
                 </table>  
@@ -122,7 +122,9 @@ Agregar actividad
           </div>
         </div>
       </div>
-      
+          </div>
+      </div>
+      </div>
   
       
   
