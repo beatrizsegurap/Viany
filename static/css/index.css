@@ -408,7 +408,7 @@ a.article:hover {
 }
 .rejilla{
     color:#096D5B;
-    margin-left: 300px;
+  
 }
 
 .input-itinerario{
@@ -434,6 +434,18 @@ a.article:hover {
     height:35px; 
     outline:#026E04; 
     text-align: center;
+    color:#026E04CC;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.input-check{
+    box-sizing: border-box;
+    border: 1px solid#026E04;
+    border-radius: 10px;
+    margin-top: 8px;
+    width:550px;
+    height:35px; 
+    outline:#026E04; 
     color:#026E04CC;
     margin-bottom: 10px;
     margin-left: 10px;

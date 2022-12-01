@@ -63,31 +63,53 @@
       </li>
     </ul>
 </nav>
-        <form method="post">
-            {% csrf_token %}
-          <div class="col py-2">
-              <div class="row">
-                  <div class="col-md-12">
-                    <p class="sub-title"> {{ request.session.nombre_usuario}},  ¿hacia dónde vas y cuántos días estarás allí? </p><br>
-                    <ul id="destinos"> 
-                      <li style='list-style:none;'>
-                          <label class="cont">1</label><input name="destino" class='input-destinos' list="comunas" type="text" placeholder="Destino"></input><input class='input-itinerario' name="dia_destino" type="number" placeholder="Cantidad de Dias"></input>
-                          <button id="agregarSeccion" type="button" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#2CD4DE" class="bi bi-plus-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/></svg></button> 
-                      </li>
-                          <datalist id='comunas'>
-                            {% for comuna in comunas %}
-                            <option value="{{comuna}}"></option>
-                            {% endfor %}
-                          </datalist>
-                    </ul>
-                  </div>
-              </div>
-          </div>
-          <input style="position: absolute;top: 80%;left:70%;" name="paso2" type="submit" value="Continuar" href="{% url 'resumen' %}">
-        </form>
-            
+
+
+<form method="post">
+    <div class="titled">
+
+      <h3>CheckList</h3>
     </div>
-</div>
+      {% csrf_token %}
+    <div class="col py-2">
+        <div class="row">
+            <div class="col-md-12">
+              <p class="sub-title">Ingresa aquellas cosas por llevar en tu viaje y que no puedes olvidar</p>
+              <ul id="hospedajes"> 
+                <li style='list-style:none;'>
+                  <input name="tipohospedaje" class='input-check' type="text" placeholder="   Ingresar ítem"></input>
+                  <button id="agregarSeccion" type="button" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#2CD4DE" class="bi bi-plus-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/></svg></button>
+              </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+  </form>
+  
+
+        
+    <!--Barra inferior-->
+    <div class="container fixed-bottom" id="bottom-var">
+      <div class="row">
+        <div class="col-md-16">
+            <div class="table">
+              <table class="table users table-hover">
+                <thead>
+                  <tr>
+                    <th>Resumen</th>
+                    <th>Vuelos y transportes</th>
+                    <th>Hospedaje</th>
+                    <th>Actividades</th> 
+                    <th>Gastronomía</th>
+                    <th>Presupuesto</th>
+                    <th class="active">CheckList</th>                                                                       
+                  </tr>                  
+                </thead>
+              </table>  
+            </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -104,15 +126,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <scrip src="plugins/dynamicTable/jquery.dynamicTable-1.0.0.js"></script>
 
-    <script>
-      $(document).ready(function(){
-        var i = 1;
-        $("#agregarSeccion").click(function(){
-            i+=1;
-            $("#destinos").append("<li style='list-style:none;'><label id='num' class='cont'>"+i+"</label><input name='destino' class='input-destinos' list='comunas' type='text' placeholder='Destino'></input><input class='input-itinerario' name='dia_destino' type='number' placeholder='Cantidad de Dias'></input></li>");
-          });
-      });
-      </script>
   </body>
 </html>
+

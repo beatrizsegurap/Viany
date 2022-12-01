@@ -14,7 +14,6 @@ def crearItinerario(request):
         form = FormCreateItinerario1(request.POST or None)
         if form.is_valid():
             form.save()
-            print(form.data.get('nombre_itinerario'),form.data.get('ciudad_origen_itinerario'),form.data.get('fecha_inicio_itinerario'))
             form = FormCreateItinerario1()
             return redirect('/itinerario/paso2')
   
@@ -26,10 +25,9 @@ def agregarDestinos(request):
     comunas = COMUNAS_CHILE
     if request.method == 'POST':
         formD = FormDestinos(request.POST or None)
-        print(request.POST['destino'])
         return render(request, 'itinerario/resumen.html')
 
-    return render(request, 'itinerario/paso2.html',{'comunas':comunas})
+    return render(request, 'itinerario/agregardestinos.html',{'comunas':comunas})
 
 
 def resumen(request):

@@ -11,7 +11,8 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('dashboard-user/', views.dashboarduser, name='dashboarduser'),
     path('cerrarsesion/', views.cerrarSesion, name='cerrarsesion'),
-    path('hospedaje/', include('hospedaje.urls')),
-    path('itinerario/', include('itinerario.urls')),
-    path('transporte/', include('transporte.urls')),
+    path('hospedaje/', include(('hospedaje.urls'))),
+    path('itinerario/', include(('itinerario.urls'))),
+    path('transporte/', include(('transporte.urls'))),
+    path('checklist/', include(('checklist.urls'))),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
