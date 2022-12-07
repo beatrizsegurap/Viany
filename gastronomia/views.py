@@ -8,4 +8,4 @@ def gastronomia(request):
     return render(request,"gastronomia.html")
 
 def agregarGastronomia(request):
-    render(request,'agregar-gastronomia.html')
+    return render(request,'agregar-gastronomia.html')
