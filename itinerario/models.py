@@ -24,4 +24,11 @@ class casillaItinerario(models.Model):
     propietario_itinerario = models.CharField(max_length=20,null=False,verbose_name="propietario")
 
 
+class destino(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_itinerario = models.ForeignKey("itinerario", on_delete=models.CASCADE)
+    destino = models.CharField(max_length=60, null=False, verbose_name="destino")
+    cant_dias = models.IntegerField(verbose_name="cantidad dias")
+
+
     
