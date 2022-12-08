@@ -16,8 +16,9 @@ def crearItinerario(request):
     if request.method == 'POST':
         form = FormCreateItinerario1(request.POST or None)
         if form.is_valid():
-            id_registro = form.save().id
-            request.session['id_itinerario'] = id_registro
+            id_registro = form.save()
+
+            request.session['id_itinerario'] = id_registro.id_itinerario
             print(form.data.get('nombre_itinerario'),form.data.get('ciudad_origen_itinerario'),form.data.get('fecha_inicio_itinerario'))
             request.session['nombre_itinerario'] = form.data.get('nombre_itinerario')
             request.session['ciudad_origen_itinerario'] = form.data.get('ciudad_origen_itinerario')
