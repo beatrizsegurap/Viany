@@ -24,7 +24,7 @@ def index (request):
 def login(request):
     if request.method == 'POST':
         try:
-            acceso = usuario.objects.get(correo_usuario = request.POST['correo_usuario'],contraseña_usuario = request.POST['contraseña_usuario'])
+            acceso = usuario.objects.get(Q(correo_usuario = request.POST['correo_usuario']) | Q(nombre_cuenta_usuario = request.POST['correo_usuario']),contraseña_usuario = request.POST['contraseña_usuario'])
             print("usuario=",acceso.nombre_usuario)
             request.session['correo_usuario']=acceso.correo_usuario
             request.session['nombre_usuario']=acceso.nombre_usuario
