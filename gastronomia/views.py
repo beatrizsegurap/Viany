@@ -18,5 +18,8 @@ def agregarGastronomia(request):
             request.session['hora_final_gastronomia'] = form.data.get('hora_final_gastronomia')
             request.session['valor_total_gastronomia'] = form.data.get('valor_total_gastronomia')
             form = formAddGastronomia()
-            return redirect("/gastronomia/menu")
-    return render(request,'agregar-gastronomia.html')
+            return redirect("/gastronomia/menu/")
+        
+    id_itineario = request.session["id_itinerario"]
+    
+    return render(request,'agregar-gastronomia.html',{'idItinerario':id_itineario})
