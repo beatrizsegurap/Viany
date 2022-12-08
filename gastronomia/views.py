@@ -5,6 +5,9 @@ from .forms import formAddGastronomia
 # Create your views here.
 
 def gastronomia(request):
+    return render(request,"gastronomia.html")
+
+def agregarGastronomia(request):
     if request.method == 'POST':
         form = formAddGastronomia(request.POST or None)
         if form.is_valid():
@@ -15,7 +18,5 @@ def gastronomia(request):
             request.session['hora_final_gastronomia'] = form.data.get('hora_final_gastronomia')
             request.session['valor_total_gastronomia'] = form.data.get('valor_total_gastronomia')
             form = formAddGastronomia()
-    return redirect("/gastronomia/menu")
-
-def agregarGastronomia(request):
+            return redirect("/gastronomia/menu")
     return render(request,'agregar-gastronomia.html')
