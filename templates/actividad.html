@@ -71,13 +71,42 @@
             </div>
         
             <div>
-              <button type="submit" href="{% url 'agregarActividad' %}" class="superior" >agregar actividad
+              <a href="{% url 'agregarActividad' %}" > <button type="submit" href="{% url 'agregarActividad' %}" class="inferior" >agregar actividad</a>
               </button>
             </div>
             <div class="tabla">
               <div class="titulo-tabla">
                 <h6>Agrega tus actividades</h6>
               </div>
+              <table class="table users table-hover">
+                <tr>
+                  <td>Detalle Actividad</td>
+                  <td>Hora de inicio</td>
+                  <td>Hora de termino</td>
+                  <td>Valor de la actividad</td>
+                  <td>Fecha actividad</td>
+                </tr>
+
+                {% for evento in activities %}
+                  <tr>
+                    <td>
+                      {{evento.detalle_actividad}}
+                    </td>
+                    <td>
+                      {{evento.hora_inicio_actividad}}
+                    </td>
+                    <td>
+                      {{evento.hora_final_actividad}}
+                    </td>
+                    <td>
+                      {{evento.valor_total_actividad}}
+                    </td>
+                    <td>
+                      {{evento.fecha_actividad}}
+                    </td>
+                  </tr>  
+                {% endfor %}
+              </table>
             </div>
 
         

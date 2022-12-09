@@ -12,3 +12,5 @@ class gastronomia_por_dia(models.Model):
     valor_total_gastronomia = models.IntegerField(null=False,verbose_name="valor total")
     fecha_gastronomia = models.DateField(verbose_name="fecha")
 
+    def str(self):
+        return self.name

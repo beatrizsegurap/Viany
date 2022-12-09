@@ -72,13 +72,43 @@
             </div>
         
             <div>
-              <a href="{% url 'agregarGastronomia' %}"><button type="submit" href="" class="superior" >agregar gastronomía
+              <a href="{% url 'agregarGastronomia' %}"><button type="submit" href="" class="inferior" >agregar gastronomía
             </button></a>
             </div>
             <div class="tabla">
               <div class="titulo-tabla">
                 <h6>Agrega tus gastronomías</h6>
               </div>
+              <!--creo que va aqui-->
+              <table class="table users table-hover">
+                <tr>
+                  <td>Detalle gastronomia</td>
+                  <td>Hora de inicio</td>
+                  <td>Hora de termino</td>
+                  <td>Valor gastronomia</td>
+                  <td>Fecha gastronomia</td>
+                </tr>
+                {% for evento in gastronomy %}
+                  <tr>
+                    <td>
+                      {{evento.detalle_gastronomia}}
+                    </td>
+                    <td>
+                      {{evento.hora_inicio_gastronomia}}
+                    </td>
+                    <td>
+                      {{evento.hora_final_gastronomia}}
+                    </td>
+                    <td>
+                      {{evento.valor_total_gastronomia}}
+                    </td>
+                    <td>
+                      {{evento.fecha_gastronomia}}
+                    </td>
+                  </tr>  
+                {% endfor %}
+              </table>
+              <!--hasta aqui-->
             </div>
 
       <!--Barra inferior-->
