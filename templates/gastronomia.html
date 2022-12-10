@@ -71,10 +71,6 @@
               </nav>
             </div>
         
-            <div>
-              <a href="{% url 'agregarGastronomia' %}"><button type="submit" href="" class="" >agregar gastronomía
-            </button></a>
-            </div>
             <div class="tabla">
               <div class="titulo-tabla">
                 <h6>Tus gastronomías</h6>
@@ -108,6 +104,10 @@
                   </tr>  
                 {% endfor %}
               </table>
+              <div>
+                <a href="{% url 'agregarGastronomia' %}"><button type="submit" href="" class="btn btn-danger" >agregar gastronomía
+              </button></a>
+              </div>
               <!--hasta aqui-->
             </div>
 

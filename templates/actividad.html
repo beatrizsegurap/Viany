@@ -71,12 +71,6 @@
               </nav>
             </div>
             
-            <div>
-              <a href="{% url 'agregarActividad' %}" > 
-                <button type="submit" href="{% url 'agregarActividad' %}" class="">agregar actividad</button>
-              </a>
-            </div>
-            
             <div class="tabla">
               <div class="titulo-tabla">
                 <h6>Agrega tus actividades</h6>
@@ -110,6 +104,11 @@
                   </tr>  
                 {% endfor %}
               </table>
+              <div>
+                <a href="{% url 'agregarActividad' %}" > 
+                  <button type="submit" href="{% url 'agregarActividad' %}" class="btn btn-danger">agregar actividad</button>
+                </a>
+              </div>
             </div>
 
         
