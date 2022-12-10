@@ -45,10 +45,11 @@ def resumen(request):
     for key, value in request.session.items():
         print(key, value)
         print(request.session['lista_destinos'])
-  #  res = dict(zip(request.session['lista_destinos'], request.session['lista_dias']))
+  
 
+    res = dict(zip(request.session['lista_destinos'], request.session['lista_dias']))
 
-    return render(request, 'itinerario/resumen.html')
+    return render(request, 'itinerario/resumen.html', {'destinos': res})
 
 
 def misItinerarios(request):
