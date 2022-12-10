@@ -37,17 +37,10 @@ def Web_scrapping_sky(origen,fi,destino,ff):
 
     codigo_unico = requests.get("https://www.skyairline.com/js/" + script).text
 
-
-
-    #print(codigo_unico)
-
     codigo_unico = codigo_unico.split('VUE_APP_PRICING_FARES_SUBSCRIPTION_KEY:"')[1]
 
     codigo_unico = codigo_unico.split('"')[0]
-    #print(codigo_unico)
 
-
-    #https://api.skyairline.com/shopping-fares/v1/fare-shop/by-daterange
 
     burp0_url = "https://api.skyairline.com:443/shopping-fares/v2/fares-shop"
     burp0_headers = {"Sec-Ch-Ua": "\"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"", "Sec-Ch-Ua-Mobile": "?0", "Market": "cl", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.5304.107 Safari/537.36", "Ocp-Apim-Subscription-Key": codigo_unico, "Content-Type": "application/json", "Accept": "application/json, text/plain, */*", "Sec-Ch-Ua-Platform": "\"Windows\"", "Origin": "https://www.skyairline.com", "Sec-Fetch-Site": "same-site", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Dest": "empty", "Referer": "https://www.skyairline.com/", "Accept-Encoding": "gzip, deflate", "Accept-Language": "en-US,en;q=0.9", "Connection": "close"}
@@ -74,16 +67,6 @@ def Web_scrapping_sky(origen,fi,destino,ff):
         fecha_destino=fecha_y_hora_destino.split("T")[0]
         hora_destino=fecha_y_hora_destino.split("T")[1]
         tarifa=name_place["fares"][0]["fareAmount"]
-        print("Origen: ",ciudad_origen)
-        print("Destino: ",ciudad_destino)
-        print("Número de vuelo",numero_vuelo)
-        print("Fecha de salida: ",fecha_origen)
-        print("hora de salida: ",hora_origen)    
-        print("Fecha de llegada: ",fecha_destino)
-        print("hora de llegada: ",hora_destino) 
-        print("Importe de la tarifa",tarifa)
-        print("-----------------")
-        print("\n")
 
 
 #----------------#

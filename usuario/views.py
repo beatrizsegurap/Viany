@@ -28,6 +28,8 @@ def login(request):
             print("usuario=",acceso.nombre_usuario)
             request.session['correo_usuario']=acceso.correo_usuario
             request.session['nombre_usuario']=acceso.nombre_usuario
+            request.session['id_usuario'] = acceso.id_usuario
+            print(request.session['id_usuario'])
             return render(request, 'dashboard-user.html')
         except usuario.DoesNotExist as e:
             messages.success(request, 'Los datos ingresados no son correctos')

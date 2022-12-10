@@ -72,7 +72,7 @@
                         <h4>Nombre del Itinerario: {{ request.session.nombre_itinerario }}</h4>
                 </div>
                 <div class="col-md-6">
-                    <h4>ID para Compartir: </h4>
+                    <h4>ID para Compartir: {{ request.session.id_publica_itinerario }}</h4>
                 </div>
 
 
@@ -80,24 +80,22 @@
 
 
  <div class="row">
-
-
         <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-             <div class="row">
-              <input name="destino[]" class='input-destinos' list="destinos" type="text" placeholder="Destino"></input>
-                <tr>
-                        <datalist id='destinosww'>
-                          {% for comuna in destinos %}
-                          <option value="{{comuna}}"></option>
-                          {% endfor %}
-                        </datalist>
-                </tr><tr>
-
-                </tr>
-
-                </table>
-             </div></div>
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+             <div class="table">
+              {% for dia, ciudad in dias.items %}
+              <tr>
+                <th>dia: {{ forloop.counter }}</th>
+                <th>fecha: {{ dia }}</th>
+                <th>ciudad: {{ ciudad }} </th>
+              </tr><br>
+              <hr>
+              {% endfor %}
+          
+             </div>
+            </div>
+          </div>
+        </div>
   <div class="tab-pane fade" id="pills-vuelos" role="tabpanel" aria-labelledby="pills-vuelos-tab">Vuelos y Transporte</div>
   <div class="tab-pane fade" id="pills-hospedaje" role="tabpanel" aria-labelledby="pills-hospedaje-tab">Hospedaje</div>
             <div class="tab-pane fade" id="pills-actividades" role="tabpanel" aria-labelledby="pills-actividades-tab">Actividades</div>
@@ -116,7 +114,7 @@
           <table class="table users table-hover">
             <thead>
               <tr>
-                <th class="active"><a id="nav-inf-act">Resumen</a></th>
+                <th class="active"><a href="{% url 'resumen' %}" id="nav-inf-act">Resumen</a></th>
                 <th><a href="{% url 'menu-transporte' %}" id="nav-inf-act">Vuelos y transportes</a></th>
                 <th ><a href="{% url 'menu-hospedaje' %}" id="nav-inf-act">Hospedaje</a></th>
                 <th><a href="{% url 'actividad' %}" id="nav-inf-act">Actividades</a></th> 
