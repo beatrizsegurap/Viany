@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
   </head>
   <body>
    <!--Barra superior-->
@@ -63,27 +64,61 @@
           <a href="#pageSubmenu">Recomendaciones</a>
       </li>
     </ul>
-</nav>
-        <form method="post">
-            {% csrf_token %}
-          <div class="col py-2">
-              <div class="row">
-                  <div class="col-md-12">
-                    <div class="titled">
-                        <div>
-                          <h3>Presupuesto</h3>
-                        </div>
-                    <ul id="presupuestos"> 
-                      <li style='list-style:none;'>
-                          <label class="cont">1</label><input name="item" class='input-item' type="text" placeholder="Ingresar Item"></input><input class='input-precio' name="precio_item" type="number" placeholder="Ingresar Precio Item"></input>
-                          <button id="agregarSeccion" type="button" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#2CD4DE" class="bi bi-plus-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/></svg></button> 
+  </nav>
+  <div class="mx-auto" style="width: 100%;">
+    <form method="post" > 
+      {% csrf_token %}
+    <div class="col py-2">
+        <div class="row">
+            <div>
+              <div >
+                  <div class="d-flex mb-3">
+                    <div class="p-2"><h3>Presupuesto</h3></div>
+                    <div class="ms-auto p-2"><input  name="presu" type="submit" value="Continuar" ></div>
+                  </div>
+                  <div class="mx-auto d-flex p-2" >
+                    <ul id="presupuestos" class="list-group"> 
+                      <li style='list-style:none;' class="list-group-item">
+                        <div class="row g-3">
+                          <div class="col-auto">
+                            <input id="inputItem" name="item" class='form-control input-item' type="text" placeholder="Ingresar Item"></input>
+                          </div>
+                          <div class="col-auto">
+                            <input id="inputMonto" class="form-control input-precio" name="precio_item" type="number" placeholder="Ingresar Precio Item"></input>
+                          </div>
+                          <div class="col-auto">
+                            <button id="agregarSeccion" onclick="agregarItem();" type="button" class="btn btn-success">Agregar</button>
+                          </div>
+                        </div>     
                       </li>
                     </ul>
                   </div>
-              </div>
-          </div>
-          <input style="position: absolute;top: 80%;left:70%;" name="presu" type="submit" value="Continuar" >
-        </form>
+                  
+                  <div style="max-width:100%">
+                    <div id="contenedor_presupuesto" class="" style="overflow-x:hidden">
+                    
+                    </div>
+                  
+                    
+                    <div class="d-flex justify-content-end mb-5 pb-5">
+                        <div class=" fs-3 p-2">Monto Total: $</div>
+                        <div class="p-2" >
+                          <input id="montoTotal" class="fs-3" disabled></input>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    
+                  
+                </div>
+              <div>    
+            </div>
+        </div>
+    </div>
+    
+  </form>
+  </div>
+        
             
     </div>
 </div>
@@ -125,7 +160,384 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+ 
+  
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+   <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+  <style>
+    .headFacturas th { 
+        font-size: 13px;
+        background-color: white;
+        border: 1px solid rgb(224, 229, 236) !important;
+    }
+
+    .headFacturas {
+        border: 1px solid rgb(224, 229, 236) !important;
+    }
+
+    .fila_facturas {
+        font-size: 13px; 
+        background-color: white; 
+        border: 1px solid rgb(224, 229, 236) !important;
+        cursor: pointer;
+    }
+    
+
+  </style>
+
+  <script>
+    var montoTotal = 0;
+    var tabla_presupuesto;
+    var data_presupuesto = []; //{id: , item: , monto: }
+    var id = 0;
+
+
+    function iniciar_tabla_presupuesto(){
+      if(tabla_presupuesto){
+        try {            
+          tabla_presupuesto.clear();
+          tabla_presupuesto.destroy();                
+        } catch (error) {
+            console.log("ERROR iniciar_tabla_presupuesto")
+        }
+      }
+
+      $("#contenedor_presupuesto").html(`
+        <table class="table table-striped table-bordered" style="width:100%; table-layout: auto" id="presupuesto" cellspacing="0">
+          <thead class="headFacturas" id="head_presupuesto">
+            <tr>
+              <th scope="col">Item</th>
+              <th class="text-nowrap text-center" scope="col">Precio</th>
+              <th class="text-nowrap text-center" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody  id="body_presupuesto">
+
+          </tbody>
+        </table>
+      `)
+       
+      data_presupuesto.forEach(el => {
+        var html = `
+          <tr class="fila_facturas">
+            <td class="celda_facturas text-center">`+ el.item+ `</td>
+            <td class="celda_facturas text-center">$`+ number_format(el.monto)+ ` </td>
+            <td class="celda_facturas text-center">  <button type="button" class="btn btn-danger" onclick="eliminarItem(`+ el.id+ `);" value="`+ el.id+ `">Eliminar</button></td>
+          </tr>
+        `;
+
+        $("#body_presupuesto").append(html);   
+      }); 
+
+      tabla_presupuesto = $('#presupuesto').DataTable({
+          "bLengthChange": true,
+          "bInfo": false,
+          "scrollX": true,                
+          "language": language, 
+          "scrollCollapse": true,
+          "paging":true,
+          "responsive": true,
+          "fixedHeader": true,
+          "scrollY":"500px",
+          "lengthMenu": [[6,10,25,50,75,100,-1],[6,10,25,50,75,100,"Todos"]],
+          "buttons": [{
+              "extend": 'excel',
+              "filename": function(){
+                  return "Resumen ";
+              },
+              "customize": function( xlsx ) {
+                  var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                  $('row c[r^="J"]', sheet).attr( 's', '63' );
+              },
+      }],
+
+          "drawCallback": function( settings ) {
+              //console.log("CAMBIANDO DE PAGINA")
+          },
+          "order": [[ 0, "desc" ]],
+          "fnRowCallback": function( row, data, iDisplayIndex, iDisplayIndexFull ) {
+              
+          },
+          "initComplete": function() {
+              //actualizar_resumen();
+          }
+      });
+    }
+
+    $(document).ready(function(){
+      /*var i = 1;
+      $("#agregarSeccion1").click(function(){
+          i+=1;
+          $("#presupuestos").append("<li style='list-style:none;'class='list-group-item'><label id='number' class='cont'>"+i+"</label><input name='item' class='input-item' type='text' placeholder='Ingresar Item'></input><input class='input-precio' name='precio_item' type='number' placeholder='Ingresar Precio Item'></input></li>");
+      });*/
+      $("#montoTotal").val(montoTotal);
+      iniciar_tabla_presupuesto();
+    });
+
+    function eliminarItem(idEliminar){
+      resultado = data_presupuesto.filter(data => data.id == idEliminar);
+      if(resultado){
+        montoTotal = montoTotal - parseInt(resultado[0].monto);
+        $("#montoTotal").val(montoTotal);
+
+        data_presupuesto = data_presupuesto.filter(data => data.id != idEliminar);
+
+        iniciar_tabla_presupuesto();
+      }
+      
+    }
+
+    function agregarItem(){
+      if( $("#inputItem").val() !=  "" && $("#inputMonto").val() != ""){
+        data_presupuesto.push({id: id ,item: $("#inputItem").val() ,monto: $("#inputMonto").val()})
+        id = id + 1;
+        
+        montoTotal = montoTotal + parseInt($("#inputMonto").val());
+        $("#montoTotal").val(montoTotal);
+
+        $("#inputItem").val("");
+        $("#inputMonto").val("");
+
+        
+        iniciar_tabla_presupuesto();
+      }
+    }
+
+    function number_format(number, decimals=0, dec_point=",", thousands_sep=".") {
+        // *     example: number_format(1234.56, 2, ',', ' ');
+        // *     return: '1 234,56'
+        number = (number + '').replace(',', '').replace(' ', '');
+        var n = !isFinite(+number) ? 0 : +number,
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+            s = '',
+            toFixedFix = function(n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.round(n * k) / k;
+            };
+        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+        if (s[0].length > 3) {
+            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+        }
+        if ((s[1] || '').length < prec) {
+            s[1] = s[1] || '';
+            s[1] += new Array(prec - s[1].length + 1).join('0');
+        }
+        return s.join(dec);
+    }
+  
+    var language = {
+      "processing": "Procesando...",
+      "lengthMenu": "Mostrar _MENU_ registros",
+      "zeroRecords": "No se encontraron resultados",
+      "emptyTable": "Ningún dato disponible en esta tabla",
+      "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+      "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+      "search": "Buscar:",
+      "infoThousands": ",",
+      "loadingRecords": "Cargando...",
+      "paginate": {
+          "first": "Primero",
+          "last": "Último",
+          "next": "Siguiente",
+          "previous": "Anterior"
+      },
+      "aria": {
+          "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+          "sortDescending": ": Activar para ordenar la columna de manera descendente"
+      },
+      "buttons": {
+          "copy": "Copiar",
+          "colvis": "Visibilidad",
+          "collection": "Colección",
+          "colvisRestore": "Restaurar visibilidad",
+          "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+          "copySuccess": {
+              "1": "Copiada 1 fila al portapapeles",
+              "_": "Copiadas %d fila al portapapeles"
+          },
+          "copyTitle": "Copiar al portapapeles",
+          "csv": "CSV",
+          "excel": "Excel",
+          "pageLength": {
+              "-1": "Mostrar todas las filas",
+              "_": "Mostrar %d filas"
+          },
+          "pdf": "PDF",
+          "print": "Imprimir"
+      },
+      "autoFill": {
+          "cancel": "Cancelar",
+          "fill": "Rellene todas las celdas con <i>%d<\/i>",
+          "fillHorizontal": "Rellenar celdas horizontalmente",
+          "fillVertical": "Rellenar celdas verticalmentemente"
+      },
+      "decimal": ",",
+      "searchBuilder": {
+          "add": "Añadir condición",
+          "button": {
+              "0": "Constructor de búsqueda",
+              "_": "Constructor de búsqueda (%d)"
+          },
+          "clearAll": "Borrar todo",
+          "condition": "Condición",
+          "conditions": {
+              "date": {
+                  "after": "Despues",
+                  "before": "Antes",
+                  "between": "Entre",
+                  "empty": "Vacío",
+                  "equals": "Igual a",
+                  "notBetween": "No entre",
+                  "notEmpty": "No Vacio",
+                  "not": "Diferente de"
+              },
+              "number": {
+                  "between": "Entre",
+                  "empty": "Vacio",
+                  "equals": "Igual a",
+                  "gt": "Mayor a",
+                  "gte": "Mayor o igual a",
+                  "lt": "Menor que",
+                  "lte": "Menor o igual que",
+                  "notBetween": "No entre",
+                  "notEmpty": "No vacío",
+                  "not": "Diferente de"
+              },
+              "string": {
+                  "contains": "Contiene",
+                  "empty": "Vacío",
+                  "endsWith": "Termina en",
+                  "equals": "Igual a",
+                  "notEmpty": "No Vacio",
+                  "startsWith": "Empieza con",
+                  "not": "Diferente de"
+              },
+              "array": {
+                  "not": "Diferente de",
+                  "equals": "Igual",
+                  "empty": "Vacío",
+                  "contains": "Contiene",
+                  "notEmpty": "No Vacío",
+                  "without": "Sin"
+              }
+          },
+          "data": "Data",
+          "deleteTitle": "Eliminar regla de filtrado",
+          "leftTitle": "Criterios anulados",
+          "logicAnd": "Y",
+          "logicOr": "O",
+          "rightTitle": "Criterios de sangría",
+          "title": {
+              "0": "Constructor de búsqueda",
+              "_": "Constructor de búsqueda (%d)"
+          },
+          "value": "Valor"
+      },
+      "searchPanes": {
+          "clearMessage": "Borrar todo",
+          "collapse": {
+              "0": "Paneles de búsqueda",
+              "_": "Paneles de búsqueda (%d)"
+          },
+          "count": "{total}",
+          "countFiltered": "{shown} ({total})",
+          "emptyPanes": "Sin paneles de búsqueda",
+          "loadMessage": "Cargando paneles de búsqueda",
+          "title": "Filtros Activos - %d"
+      },
+      "select": {
+          "cells": {
+              "1": "1 celda seleccionada",
+              "_": "%d celdas seleccionadas"
+          },
+          "columns": {
+              "1": "1 columna seleccionada",
+              "_": "%d columnas seleccionadas"
+          },
+          "rows": {
+              "1": "1 fila seleccionada",
+              "_": "%d filas seleccionadas"
+          }
+      },
+      "thousands": ".",
+      "datetime": {
+          "previous": "Anterior",
+          "next": "Proximo",
+          "hours": "Horas",
+          "minutes": "Minutos",
+          "seconds": "Segundos",
+          "unknown": "-",
+          "amPm": [
+              "AM",
+              "PM"
+          ],
+          "months": {
+              "0": "Enero",
+              "1": "Febrero",
+              "10": "Noviembre",
+              "11": "Diciembre",
+              "2": "Marzo",
+              "3": "Abril",
+              "4": "Mayo",
+              "5": "Junio",
+              "6": "Julio",
+              "7": "Agosto",
+              "8": "Septiembre",
+              "9": "Octubre"
+          },
+          "weekdays": [
+              "Dom",
+              "Lun",
+              "Mar",
+              "Mie",
+              "Jue",
+              "Vie",
+              "Sab"
+          ]
+      },
+      "editor": {
+          "close": "Cerrar",
+          "create": {
+              "button": "Nuevo",
+              "title": "Crear Nuevo Registro",
+              "submit": "Crear"
+          },
+          "edit": {
+              "button": "Editar",
+              "title": "Editar Registro",
+              "submit": "Actualizar"
+          },
+          "remove": {
+              "button": "Eliminar",
+              "title": "Eliminar Registro",
+              "submit": "Eliminar",
+              "confirm": {
+                  "_": "¿Está seguro que desea eliminar %d filas?",
+                  "1": "¿Está seguro que desea eliminar 1 fila?"
+              }
+          },
+          "error": {
+              "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
+          },
+          "multi": {
+              "title": "Múltiples Valores",
+              "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
+              "restore": "Deshacer Cambios",
+              "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo."
+          }
+      },
+      "info": "Mostrando _START_ a _END_ de _TOTAL_ registros"
+  };
+
+  </script>
 
 </body>
 </html>
