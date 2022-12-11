@@ -12,67 +12,68 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
   </head>
   <body>
-   <!--Barra superior-->
- <nav class="navbar navbar-expand-lg navbar-light menu shadow">
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <a class="navbar-brand" href="#">
-            <img src="../static/assets/logo-white.png" alt="Viany" width="80" height="80">
-            </a>
-        </div>
-        <div class="col navbar-brand">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#2CD4DE" class="bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </svg>
-            {% if request.session.nombre_usuario %}
-            <span class="navbar-text">
-            <h5 class="nombre">Bienvenido/a {{ request.session.nombre_usuario }} </h5>
-            <h6 class="nombre">Perfil</h6>
-            </span>
-        </div>
-        
-        <div class="col"> 
-            <div class="logout navbar-brand">
-                <svg class="profile" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2CD4DE" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                  </svg>
-                  <a class="exit" href="{% url 'home' %}" >Cerrar sesion</a>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-  </div>
-</nav>
-
- <!--Barra lateral izquierda-->
- <div class="wrapper">
-  <nav id="sidebar" class="">
-    <ul class="list-unstyled components">
-        <li>
-            <a href="{% url 'dashboarduser'%}">Inicio</a>
-        </li>
-        <li class="active">
-            <a href="{% url 'newItinerario'%}">Crear itinerario</a>
-        </li>
-        <li>
-            <a href="#pageSubmenu">Mis itinerarios</a>
-        </li>
-        <li>
-          <a href="#pageSubmenu">Recomendaciones</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="mx-auto" style="width: 100%;">
-    <form method="post" > 
-      {% csrf_token %}
-    <div class="col py-2">
+    <!--Barra superior-->
+    <nav class="navbar navbar-expand-lg navbar-light menu shadow">
+      <div class="container-fluid">
         <div class="row">
-            <div>
-              <div >
+            <div class="col">
+                <a class="navbar-brand" href="#">
+                <img src="../static/assets/logo-white.png" alt="Viany" width="80" height="80">
+                </a>
+            </div>
+            <div class="col navbar-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#2CD4DE" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+                {% if request.session.nombre_usuario %}
+                <span class="navbar-text">
+                <h5 class="nombre">Bienvenido/a {{ request.session.nombre_usuario }} </h5>
+                <h6 class="nombre">Perfil</h6>
+                </span>
+            </div>
+            
+            <div class="col"> 
+                <div class="logout navbar-brand">
+                    <svg class="profile" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#2CD4DE" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                      </svg>
+                      <a class="exit" href="{% url 'home' %}" >Cerrar sesion</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+      </div>
+    </nav>
+
+      <!--Barra lateral izquierda-->
+    <div class="wrapper">
+      <nav id="sidebar" class="">
+        <ul class="list-unstyled components">
+          <li>
+              <a href="{% url 'dashboarduser'%}">Inicio</a>
+          </li>
+          <li class="active">
+              <a href="{% url 'newItinerario'%}">Crear itinerario</a>
+          </li>
+          <li>
+              <a href="#pageSubmenu">Mis itinerarios</a>
+          </li>
+          <li>
+            <a href="#pageSubmenu">Recomendaciones</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="mx-auto" style="width: 100%;">
+        <form method="post" > 
+          {% csrf_token %}
+          <div class="col py-2">
+            <div class="row">
+              <div>
+                <div>
                   <div class="d-flex mb-3">
+                    
                     <div class="p-2"><h3>Presupuesto</h3></div>
                     <a href="{% url 'checklist' %}" class="ms-auto btn btn-danger d-flex align-content-center flex-wrap" role="button">Continuar</a>
                   </div>
@@ -98,36 +99,22 @@
                     <div id="contenedor_presupuesto" class="" style="overflow-x:hidden">
                     
                     </div>
-                  
-                    
                     <div class="d-flex justify-content-end mb-5 pb-5">
-                        <div class=" fs-3 p-2">Monto Total: $</div>
-                        <div class="p-2" >
-                          <input id="montoTotal" class="fs-3" disabled></input>
-                        </div>
+                      <div class=" fs-3 p-2">Monto Total: $ </div>
+                      <div class="p-2" >
+                        <input id="montoTotal" class="fs-3" disabled></input>
                       </div>
                     </div>
-                    
-                    
-                  
-                </div>
-              <div>    
+                  </div> 
+                </div>   
+              </div>
             </div>
-        </div>
-    </div>
-    
-  </form>
-  </div>
-        
+          </div>
+        </form>
             
-    </div>
-</div>
-
-<!--Barra inferior-->
-<div class="container fixed-bottom" id="bottom-var">
-  <div class="row">
-    <div class="col-md-16">
-        <div class="table">
+        <!--Barra inferior-->
+      
+        <div id="bottom-var" class=" mr-4">
           <table class="table users table-hover">
             <thead>
               <tr>
@@ -142,402 +129,398 @@
             </thead>
           </table>  
         </div>
+        
+      </div>
     </div>
-  </div>
-</div>
-    </div>
-</div>
-</div>
   
 
   
 
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
   
-  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
- 
   
    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
-  <style>
-    .headFacturas th { 
-        font-size: 13px;
-        background-color: white;
-        border: 1px solid rgb(224, 229, 236) !important;
-    }
-
-    .headFacturas {
-        border: 1px solid rgb(224, 229, 236) !important;
-    }
-
-    .fila_facturas {
-        font-size: 13px; 
-        background-color: white; 
-        border: 1px solid rgb(224, 229, 236) !important;
-        cursor: pointer;
-    }
-    
-
-  </style>
-
-  <script>
-    var montoTotal = 0;
-    var tabla_presupuesto;
-    var data_presupuesto = []; //{id: , item: , monto: }
-    var id = 0;
-
-
-    function iniciar_tabla_presupuesto(){
-      if(tabla_presupuesto){
-        try {            
-          tabla_presupuesto.clear();
-          tabla_presupuesto.destroy();                
-        } catch (error) {
-            console.log("ERROR iniciar_tabla_presupuesto")
-        }
+    <style>
+      .headFacturas th { 
+          font-size: 13px;
+          background-color: white;
+          border: 1px solid rgb(224, 229, 236) !important;
       }
 
-      $("#contenedor_presupuesto").html(`
-        <table class="table table-striped table-bordered" style="width:100%; table-layout: auto" id="presupuesto" cellspacing="0">
-          <thead class="headFacturas" id="head_presupuesto">
-            <tr>
-              <th scope="col">Item</th>
-              <th class="text-nowrap text-center" scope="col">Precio</th>
-              <th class="text-nowrap text-center" scope="col"></th>
-            </tr>
-          </thead>
-          <tbody  id="body_presupuesto">
+      .headFacturas {
+          border: 1px solid rgb(224, 229, 236) !important;
+      }
 
-          </tbody>
-        </table>
-      `)
-       
-      data_presupuesto.forEach(el => {
-        var html = `
-          <tr class="fila_facturas">
-            <td class="celda_facturas text-center">`+ el.item+ `</td>
-            <td class="celda_facturas text-center">$`+ number_format(el.monto)+ ` </td>
-            <td class="celda_facturas text-center">  <button type="button" class="btn btn-danger" onclick="eliminarItem(`+ el.id+ `);" value="`+ el.id+ `">Eliminar</button></td>
-          </tr>
-        `;
-
-        $("#body_presupuesto").append(html);   
-      }); 
-
-      tabla_presupuesto = $('#presupuesto').DataTable({
-          "bLengthChange": true,
-          "bInfo": false,
-          "scrollX": true,                
-          "language": language, 
-          "scrollCollapse": true,
-          "paging":true,
-          "responsive": true,
-          "fixedHeader": true,
-          "scrollY":"500px",
-          "lengthMenu": [[6,10,25,50,75,100,-1],[6,10,25,50,75,100,"Todos"]],
-          "buttons": [{
-              "extend": 'excel',
-              "filename": function(){
-                  return "Resumen ";
-              },
-              "customize": function( xlsx ) {
-                  var sheet = xlsx.xl.worksheets['sheet1.xml'];
-                  $('row c[r^="J"]', sheet).attr( 's', '63' );
-              },
-      }],
-
-          "drawCallback": function( settings ) {
-              //console.log("CAMBIANDO DE PAGINA")
-          },
-          "order": [[ 0, "desc" ]],
-          "fnRowCallback": function( row, data, iDisplayIndex, iDisplayIndexFull ) {
-              
-          },
-          "initComplete": function() {
-              //actualizar_resumen();
-          }
-      });
-    }
-
-    $(document).ready(function(){
-      /*var i = 1;
-      $("#agregarSeccion1").click(function(){
-          i+=1;
-          $("#presupuestos").append("<li style='list-style:none;'class='list-group-item'><label id='number' class='cont'>"+i+"</label><input name='item' class='input-item' type='text' placeholder='Ingresar Item'></input><input class='input-precio' name='precio_item' type='number' placeholder='Ingresar Precio Item'></input></li>");
-      });*/
-      $("#montoTotal").val(montoTotal);
-      iniciar_tabla_presupuesto();
-    });
-
-    function eliminarItem(idEliminar){
-      resultado = data_presupuesto.filter(data => data.id == idEliminar);
-      if(resultado){
-        montoTotal = montoTotal - parseInt(resultado[0].monto);
-        $("#montoTotal").val(montoTotal);
-
-        data_presupuesto = data_presupuesto.filter(data => data.id != idEliminar);
-
-        iniciar_tabla_presupuesto();
+      .fila_facturas {
+          font-size: 13px; 
+          background-color: white; 
+          border: 1px solid rgb(224, 229, 236) !important;
+          cursor: pointer;
       }
       
-    }
 
-    function agregarItem(){
-      if( $("#inputItem").val() !=  "" && $("#inputMonto").val() != ""){
-        data_presupuesto.push({id: id ,item: $("#inputItem").val() ,monto: $("#inputMonto").val()})
-        id = id + 1;
+    </style>
+
+    <script>
+      var montoTotal = 0;
+      var tabla_presupuesto;
+      var data_presupuesto = []; //{id: , item: , monto: }
+      var id = 0;
+
+
+      function iniciar_tabla_presupuesto(){
+        if(tabla_presupuesto){
+          try {            
+            tabla_presupuesto.clear();
+            tabla_presupuesto.destroy();                
+          } catch (error) {
+              console.log("ERROR iniciar_tabla_presupuesto")
+          }
+        }
+
+        $("#contenedor_presupuesto").html(`
+          <table class="table table-striped table-bordered" style="width:100%; table-layout: auto" id="presupuesto" cellspacing="0">
+            <thead class="headFacturas" id="head_presupuesto">
+              <tr>
+                <th scope="col">Item</th>
+                <th class="text-nowrap text-center" scope="col">Precio</th>
+                <th class="text-nowrap text-center" scope="col"></th>
+              </tr>
+            </thead>
+            <tbody  id="body_presupuesto">
+
+            </tbody>
+          </table>
+        `)
         
-        montoTotal = montoTotal + parseInt($("#inputMonto").val());
-        $("#montoTotal").val(montoTotal);
+        data_presupuesto.forEach(el => {
+          var html = `
+            <tr class="fila_facturas">
+              <td class="celda_facturas text-center">`+ el.item+ `</td>
+              <td class="celda_facturas text-center">$`+ number_format(el.monto)+ ` </td>
+              <td class="celda_facturas text-center">  <button type="button" class="btn btn-danger" onclick="eliminarItem(`+ el.id+ `);" value="`+ el.id+ `">Eliminar</button></td>
+            </tr>
+          `;
 
-        $("#inputItem").val("");
-        $("#inputMonto").val("");
+          $("#body_presupuesto").append(html);   
+        }); 
 
-        
-        iniciar_tabla_presupuesto();
+        tabla_presupuesto = $('#presupuesto').DataTable({
+            "bLengthChange": true,
+            "bInfo": false,
+            "scrollX": true,                
+            "language": language, 
+            "scrollCollapse": true,
+            "paging":true,
+            "responsive": true,
+            "fixedHeader": true,
+            "scrollY":"500px",
+            "lengthMenu": [[6,10,25,50,75,100,-1],[6,10,25,50,75,100,"Todos"]],
+            "buttons": [{
+                "extend": 'excel',
+                "filename": function(){
+                    return "Resumen ";
+                },
+                "customize": function( xlsx ) {
+                    var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                    $('row c[r^="J"]', sheet).attr( 's', '63' );
+                },
+        }],
+
+            "drawCallback": function( settings ) {
+                //console.log("CAMBIANDO DE PAGINA")
+            },
+            "order": [[ 0, "desc" ]],
+            "fnRowCallback": function( row, data, iDisplayIndex, iDisplayIndexFull ) {
+                
+            },
+            "initComplete": function() {
+                //actualizar_resumen();
+            }
+        });
       }
-    }
 
-    function number_format(number, decimals=0, dec_point=",", thousands_sep=".") {
-        // *     example: number_format(1234.56, 2, ',', ' ');
-        // *     return: '1 234,56'
-        number = (number + '').replace(',', '').replace(' ', '');
-        var n = !isFinite(+number) ? 0 : +number,
-            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-            s = '',
-            toFixedFix = function(n, prec) {
-            var k = Math.pow(10, prec);
-            return '' + Math.round(n * k) / k;
-            };
-        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-        if (s[0].length > 3) {
-            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+      $(document).ready(function(){
+        /*var i = 1;
+        $("#agregarSeccion1").click(function(){
+            i+=1;
+            $("#presupuestos").append("<li style='list-style:none;'class='list-group-item'><label id='number' class='cont'>"+i+"</label><input name='item' class='input-item' type='text' placeholder='Ingresar Item'></input><input class='input-precio' name='precio_item' type='number' placeholder='Ingresar Precio Item'></input></li>");
+        });*/
+        $("#montoTotal").val(montoTotal);
+        iniciar_tabla_presupuesto();
+      });
+
+      function eliminarItem(idEliminar){
+        resultado = data_presupuesto.filter(data => data.id == idEliminar);
+        if(resultado){
+          montoTotal = montoTotal - parseInt(resultado[0].monto);
+          $("#montoTotal").val(montoTotal);
+
+          data_presupuesto = data_presupuesto.filter(data => data.id != idEliminar);
+
+          iniciar_tabla_presupuesto();
         }
-        if ((s[1] || '').length < prec) {
-            s[1] = s[1] || '';
-            s[1] += new Array(prec - s[1].length + 1).join('0');
+        
+      }
+
+      function agregarItem(){
+        if( $("#inputItem").val() !=  "" && $("#inputMonto").val() != ""){
+          data_presupuesto.push({id: id ,item: $("#inputItem").val() ,monto: $("#inputMonto").val()})
+          id = id + 1;
+          
+          montoTotal = montoTotal + parseInt($("#inputMonto").val());
+          $("#montoTotal").val(montoTotal);
+
+          $("#inputItem").val("");
+          $("#inputMonto").val("");
+
+          
+          iniciar_tabla_presupuesto();
         }
-        return s.join(dec);
-    }
-  
-    var language = {
-      "processing": "Procesando...",
-      "lengthMenu": "Mostrar _MENU_ registros",
-      "zeroRecords": "No se encontraron resultados",
-      "emptyTable": "Ningún dato disponible en esta tabla",
-      "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-      "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-      "search": "Buscar:",
-      "infoThousands": ",",
-      "loadingRecords": "Cargando...",
-      "paginate": {
-          "first": "Primero",
-          "last": "Último",
-          "next": "Siguiente",
-          "previous": "Anterior"
-      },
-      "aria": {
-          "sortAscending": ": Activar para ordenar la columna de manera ascendente",
-          "sortDescending": ": Activar para ordenar la columna de manera descendente"
-      },
-      "buttons": {
-          "copy": "Copiar",
-          "colvis": "Visibilidad",
-          "collection": "Colección",
-          "colvisRestore": "Restaurar visibilidad",
-          "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
-          "copySuccess": {
-              "1": "Copiada 1 fila al portapapeles",
-              "_": "Copiadas %d fila al portapapeles"
-          },
-          "copyTitle": "Copiar al portapapeles",
-          "csv": "CSV",
-          "excel": "Excel",
-          "pageLength": {
-              "-1": "Mostrar todas las filas",
-              "_": "Mostrar %d filas"
-          },
-          "pdf": "PDF",
-          "print": "Imprimir"
-      },
-      "autoFill": {
-          "cancel": "Cancelar",
-          "fill": "Rellene todas las celdas con <i>%d<\/i>",
-          "fillHorizontal": "Rellenar celdas horizontalmente",
-          "fillVertical": "Rellenar celdas verticalmentemente"
-      },
-      "decimal": ",",
-      "searchBuilder": {
-          "add": "Añadir condición",
-          "button": {
-              "0": "Constructor de búsqueda",
-              "_": "Constructor de búsqueda (%d)"
-          },
-          "clearAll": "Borrar todo",
-          "condition": "Condición",
-          "conditions": {
-              "date": {
-                  "after": "Despues",
-                  "before": "Antes",
-                  "between": "Entre",
-                  "empty": "Vacío",
-                  "equals": "Igual a",
-                  "notBetween": "No entre",
-                  "notEmpty": "No Vacio",
-                  "not": "Diferente de"
-              },
-              "number": {
-                  "between": "Entre",
-                  "empty": "Vacio",
-                  "equals": "Igual a",
-                  "gt": "Mayor a",
-                  "gte": "Mayor o igual a",
-                  "lt": "Menor que",
-                  "lte": "Menor o igual que",
-                  "notBetween": "No entre",
-                  "notEmpty": "No vacío",
-                  "not": "Diferente de"
-              },
-              "string": {
-                  "contains": "Contiene",
-                  "empty": "Vacío",
-                  "endsWith": "Termina en",
-                  "equals": "Igual a",
-                  "notEmpty": "No Vacio",
-                  "startsWith": "Empieza con",
-                  "not": "Diferente de"
-              },
-              "array": {
-                  "not": "Diferente de",
-                  "equals": "Igual",
-                  "empty": "Vacío",
-                  "contains": "Contiene",
-                  "notEmpty": "No Vacío",
-                  "without": "Sin"
-              }
-          },
-          "data": "Data",
-          "deleteTitle": "Eliminar regla de filtrado",
-          "leftTitle": "Criterios anulados",
-          "logicAnd": "Y",
-          "logicOr": "O",
-          "rightTitle": "Criterios de sangría",
-          "title": {
-              "0": "Constructor de búsqueda",
-              "_": "Constructor de búsqueda (%d)"
-          },
-          "value": "Valor"
-      },
-      "searchPanes": {
-          "clearMessage": "Borrar todo",
-          "collapse": {
-              "0": "Paneles de búsqueda",
-              "_": "Paneles de búsqueda (%d)"
-          },
-          "count": "{total}",
-          "countFiltered": "{shown} ({total})",
-          "emptyPanes": "Sin paneles de búsqueda",
-          "loadMessage": "Cargando paneles de búsqueda",
-          "title": "Filtros Activos - %d"
-      },
-      "select": {
-          "cells": {
-              "1": "1 celda seleccionada",
-              "_": "%d celdas seleccionadas"
-          },
-          "columns": {
-              "1": "1 columna seleccionada",
-              "_": "%d columnas seleccionadas"
-          },
-          "rows": {
-              "1": "1 fila seleccionada",
-              "_": "%d filas seleccionadas"
-          }
-      },
-      "thousands": ".",
-      "datetime": {
-          "previous": "Anterior",
-          "next": "Proximo",
-          "hours": "Horas",
-          "minutes": "Minutos",
-          "seconds": "Segundos",
-          "unknown": "-",
-          "amPm": [
-              "AM",
-              "PM"
-          ],
-          "months": {
-              "0": "Enero",
-              "1": "Febrero",
-              "10": "Noviembre",
-              "11": "Diciembre",
-              "2": "Marzo",
-              "3": "Abril",
-              "4": "Mayo",
-              "5": "Junio",
-              "6": "Julio",
-              "7": "Agosto",
-              "8": "Septiembre",
-              "9": "Octubre"
-          },
-          "weekdays": [
-              "Dom",
-              "Lun",
-              "Mar",
-              "Mie",
-              "Jue",
-              "Vie",
-              "Sab"
-          ]
-      },
-      "editor": {
-          "close": "Cerrar",
-          "create": {
-              "button": "Nuevo",
-              "title": "Crear Nuevo Registro",
-              "submit": "Crear"
-          },
-          "edit": {
-              "button": "Editar",
-              "title": "Editar Registro",
-              "submit": "Actualizar"
-          },
-          "remove": {
-              "button": "Eliminar",
-              "title": "Eliminar Registro",
-              "submit": "Eliminar",
-              "confirm": {
-                  "_": "¿Está seguro que desea eliminar %d filas?",
-                  "1": "¿Está seguro que desea eliminar 1 fila?"
-              }
-          },
-          "error": {
-              "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
-          },
-          "multi": {
-              "title": "Múltiples Valores",
-              "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
-              "restore": "Deshacer Cambios",
-              "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo."
-          }
-      },
-      "info": "Mostrando _START_ a _END_ de _TOTAL_ registros"
-  };
+      }
 
-  </script>
+      function number_format(number, decimals=0, dec_point=",", thousands_sep=".") {
+          // *     example: number_format(1234.56, 2, ',', ' ');
+          // *     return: '1 234,56'
+          number = (number + '').replace(',', '').replace(' ', '');
+          var n = !isFinite(+number) ? 0 : +number,
+              prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+              sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+              dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+              s = '',
+              toFixedFix = function(n, prec) {
+              var k = Math.pow(10, prec);
+              return '' + Math.round(n * k) / k;
+              };
+          s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+          if (s[0].length > 3) {
+              s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+          }
+          if ((s[1] || '').length < prec) {
+              s[1] = s[1] || '';
+              s[1] += new Array(prec - s[1].length + 1).join('0');
+          }
+          return s.join(dec);
+      }
+    
+      var language = {
+        "processing": "Procesando...",
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "zeroRecords": "No se encontraron resultados",
+        "emptyTable": "Ningún dato disponible en esta tabla",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "search": "Buscar:",
+        "infoThousands": ",",
+        "loadingRecords": "Cargando...",
+        "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        },
+        "aria": {
+            "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sortDescending": ": Activar para ordenar la columna de manera descendente"
+        },
+        "buttons": {
+            "copy": "Copiar",
+            "colvis": "Visibilidad",
+            "collection": "Colección",
+            "colvisRestore": "Restaurar visibilidad",
+            "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+            "copySuccess": {
+                "1": "Copiada 1 fila al portapapeles",
+                "_": "Copiadas %d fila al portapapeles"
+            },
+            "copyTitle": "Copiar al portapapeles",
+            "csv": "CSV",
+            "excel": "Excel",
+            "pageLength": {
+                "-1": "Mostrar todas las filas",
+                "_": "Mostrar %d filas"
+            },
+            "pdf": "PDF",
+            "print": "Imprimir"
+        },
+        "autoFill": {
+            "cancel": "Cancelar",
+            "fill": "Rellene todas las celdas con <i>%d<\/i>",
+            "fillHorizontal": "Rellenar celdas horizontalmente",
+            "fillVertical": "Rellenar celdas verticalmentemente"
+        },
+        "decimal": ",",
+        "searchBuilder": {
+            "add": "Añadir condición",
+            "button": {
+                "0": "Constructor de búsqueda",
+                "_": "Constructor de búsqueda (%d)"
+            },
+            "clearAll": "Borrar todo",
+            "condition": "Condición",
+            "conditions": {
+                "date": {
+                    "after": "Despues",
+                    "before": "Antes",
+                    "between": "Entre",
+                    "empty": "Vacío",
+                    "equals": "Igual a",
+                    "notBetween": "No entre",
+                    "notEmpty": "No Vacio",
+                    "not": "Diferente de"
+                },
+                "number": {
+                    "between": "Entre",
+                    "empty": "Vacio",
+                    "equals": "Igual a",
+                    "gt": "Mayor a",
+                    "gte": "Mayor o igual a",
+                    "lt": "Menor que",
+                    "lte": "Menor o igual que",
+                    "notBetween": "No entre",
+                    "notEmpty": "No vacío",
+                    "not": "Diferente de"
+                },
+                "string": {
+                    "contains": "Contiene",
+                    "empty": "Vacío",
+                    "endsWith": "Termina en",
+                    "equals": "Igual a",
+                    "notEmpty": "No Vacio",
+                    "startsWith": "Empieza con",
+                    "not": "Diferente de"
+                },
+                "array": {
+                    "not": "Diferente de",
+                    "equals": "Igual",
+                    "empty": "Vacío",
+                    "contains": "Contiene",
+                    "notEmpty": "No Vacío",
+                    "without": "Sin"
+                }
+            },
+            "data": "Data",
+            "deleteTitle": "Eliminar regla de filtrado",
+            "leftTitle": "Criterios anulados",
+            "logicAnd": "Y",
+            "logicOr": "O",
+            "rightTitle": "Criterios de sangría",
+            "title": {
+                "0": "Constructor de búsqueda",
+                "_": "Constructor de búsqueda (%d)"
+            },
+            "value": "Valor"
+        },
+        "searchPanes": {
+            "clearMessage": "Borrar todo",
+            "collapse": {
+                "0": "Paneles de búsqueda",
+                "_": "Paneles de búsqueda (%d)"
+            },
+            "count": "{total}",
+            "countFiltered": "{shown} ({total})",
+            "emptyPanes": "Sin paneles de búsqueda",
+            "loadMessage": "Cargando paneles de búsqueda",
+            "title": "Filtros Activos - %d"
+        },
+        "select": {
+            "cells": {
+                "1": "1 celda seleccionada",
+                "_": "%d celdas seleccionadas"
+            },
+            "columns": {
+                "1": "1 columna seleccionada",
+                "_": "%d columnas seleccionadas"
+            },
+            "rows": {
+                "1": "1 fila seleccionada",
+                "_": "%d filas seleccionadas"
+            }
+        },
+        "thousands": ".",
+        "datetime": {
+            "previous": "Anterior",
+            "next": "Proximo",
+            "hours": "Horas",
+            "minutes": "Minutos",
+            "seconds": "Segundos",
+            "unknown": "-",
+            "amPm": [
+                "AM",
+                "PM"
+            ],
+            "months": {
+                "0": "Enero",
+                "1": "Febrero",
+                "10": "Noviembre",
+                "11": "Diciembre",
+                "2": "Marzo",
+                "3": "Abril",
+                "4": "Mayo",
+                "5": "Junio",
+                "6": "Julio",
+                "7": "Agosto",
+                "8": "Septiembre",
+                "9": "Octubre"
+            },
+            "weekdays": [
+                "Dom",
+                "Lun",
+                "Mar",
+                "Mie",
+                "Jue",
+                "Vie",
+                "Sab"
+            ]
+        },
+        "editor": {
+            "close": "Cerrar",
+            "create": {
+                "button": "Nuevo",
+                "title": "Crear Nuevo Registro",
+                "submit": "Crear"
+            },
+            "edit": {
+                "button": "Editar",
+                "title": "Editar Registro",
+                "submit": "Actualizar"
+            },
+            "remove": {
+                "button": "Eliminar",
+                "title": "Eliminar Registro",
+                "submit": "Eliminar",
+                "confirm": {
+                    "_": "¿Está seguro que desea eliminar %d filas?",
+                    "1": "¿Está seguro que desea eliminar 1 fila?"
+                }
+            },
+            "error": {
+                "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
+            },
+            "multi": {
+                "title": "Múltiples Valores",
+                "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
+                "restore": "Deshacer Cambios",
+                "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo."
+            }
+        },
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ registros"
+    };
 
-</body>
+    </script>
+  </body>
 </html>
