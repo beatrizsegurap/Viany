@@ -1,0 +1,22 @@
+.row1{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.sub-title2{
+    color: #096D5B;
+    font-size: 17px;
+    margin-left: 30px;
+    font-weight: 600;
+}
+
+.btn-agregar-transporte{
+    font-size: 17px !important;
+    border-radius: 12px !important;
+    background: #E0282A !important;
+    border-color: #E0282A !important;
+    color: white !important; 
+    width:250px;
+    height: 50px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
