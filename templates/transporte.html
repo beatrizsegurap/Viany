@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/transporte.css' %}">
   </head>
 
   <body>
@@ -46,16 +47,16 @@
       </div>
     </nav>
   </div>
-
+      
+    <div class="wrapper">
       <!--Barra lateral izquierda-->
-    <div class="wrapper fixed-bottom">
       <nav id="sidebar" class="">
         <ul class="list-unstyled components">
             <li>
-                <a href="#homeSubmenu" >Inicio</a>
+                <a href="{% url 'dashboarduser'%}">Inicio</a>
             </li>
             <li class="active">
-                <a href="#">Crear itinerario</a>
+                <a href="{% url 'newItinerario'%}">Crear itinerario</a>
             </li>
             <li>
                 <a href="#pageSubmenu">Mis itinerarios</a>
@@ -65,24 +66,35 @@
           </li>
         </ul>
       </nav>
-    </div>
 
-    <div class="titled">
-        <h3>Vuelos y transportes</h3>
-      </div>
-    <div>
-      <button type="button" class="superior" >
-        <a href="{% url 'agregarTransporte' %}" id="nav-inf-act">Agregar trasporte</a>
-      </button>
-    </div>
-    <div class="tabla">
-      <div class="titulo-tabla">
-        <h6>Selecciona los datos correspondiente a tu transporte a agregar para buscar recomendaciones</h6>
-      </div>
-    </div>
+      <!-- Contenido -->
+      <div class="container-fluid">
+        <div class="row row1">
+          <div class="col"></div>
+          <div class="col">
+            <p class="sub-title">Vuelos y transportes</p>
+          </div>
+          <div class="col"></div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p class="sub-title2">Agrega tus datos de transporte</p>
+          </div>
+          <div class="col"></div>
+          <div class="col"> <button type="button" class="btn btn-primary btn-agregar-transporte">
+            <a href="{% url 'agregarTransporte' %}" id="nav-inf-act">Agregar trasporte</a>
+          </button></div>
+        </div>
 
+
+        <div class="row">
+          <div class="col"> <p class="sub-title">Día 1</p> </div>
+          <div class="col"></div>
+        </div>
+      </div>
+  </div>
 <!--Barra inferior-->
-<div class="container fixed-bottom" id="bottom-var">
+<div class="container-fluid" id="bottom-var">
   <div class="row">
     <div class="col-md-16">
         <div class="table">
