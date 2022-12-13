@@ -47,14 +47,14 @@
           </nav>
 
       <!--Barra lateral izquierda-->
-      <div class="wrapper fixed-bottom">
+      <div class="wrapper">
         <nav id="sidebar" class="">
           <ul class="list-unstyled components">
               <li>
-                  <a href="#homeSubmenu" >Inicio</a>
+                  <a href="{% url 'dashboarduser'%}">Inicio</a>
               </li>
               <li class="active">
-                  <a href="#">Crear itinerario</a>
+                  <a href="{% url 'newItinerario'%}">Crear itinerario</a>
               </li>
               <li>
                   <a href="#pageSubmenu">Mis itinerarios</a>
@@ -63,12 +63,13 @@
                 <a href="#pageSubmenu">Recomendaciones</a>
             </li>
           </ul>
-          </nav>
-      </div>
+        </nav>
+
+
+
     
       <form method="post" action="#">
         <div class="titled">
-
           <h3>Gastronomía</h3>
         </div>
           {% csrf_token %}
@@ -83,21 +84,21 @@
                     </li>
                     
                    <li style='list-style:none;'>
-                    <input name="detalle_gastronomia" class='input-itinerario' type="text" placeholder="Descripcion"></input><input class='input-itinerario' name="hora_inicio_gastronomia" type="time" placeholder="Hora Inicio"></input><input class='input-itinerario' name="hora_final_gastronomia" type="time" placeholder="Termino de hora"></input><input class='input-itinerario' name="valor_total_gastronomia" type="number" placeholder="Valor total"></input>
+                    <input name="detalle_gastronomia" class='input-itinerario' type="text" placeholder=" Nombre"></input><input class='input-itinerario' name="hora_inicio_gastronomia" type="time" placeholder="Hora Inicio"></input><input class='input-itinerario' name="hora_final_gastronomia" type="time" placeholder="Termino de hora"></input><input class='input-itinerario' name="valor_total_gastronomia" type="number" placeholder=" Valor total"></input>
                    </li>
                   </ul>
                 </div>
             </div>
         </div>
         <input type="hidden" name="id_itinerario" value="{{ idItinerario }}" >
-        <input name="submit" type="submit" value="Agregar">
+        <input name="submit" type="submit" value="Agregar" class="ms-auto btn btn-danger d-flex justify-content-center flex-wrap">
         <!--style="position: absolute;top: 80%;left:70%;"-->
       </form>
       
           
-  </div>
-</div>
-  
+      </div>
+    </div>
+    </div>
       <!--Barra inferior-->
       <div class="container fixed-bottom" id="bottom-var">
         <div class="row">

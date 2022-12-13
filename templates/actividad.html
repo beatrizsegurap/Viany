@@ -45,21 +45,16 @@
           </nav>
         </div>
 
-        <div class="titled">
-            <div>
-              <h3>Actividad</h3>
-            </div>
-        
-              <!--Barra lateral izquierda-->
-              
-            <div class="wrapper fixed-bottom">
+            
+            <!--Barra lateral izquierda  -->
+            <div class="wrapper">
               <nav id="sidebar" class="">
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="#homeSubmenu" >Inicio</a>
+                        <a href="{% url 'dashboarduser'%}">Inicio</a>
                     </li>
                     <li class="active">
-                        <a href="#">Crear itinerario</a>
+                        <a href="{% url 'newItinerario'%}">Crear itinerario</a>
                     </li>
                     <li>
                         <a href="#pageSubmenu">Mis itinerarios</a>
@@ -69,22 +64,26 @@
                   </li>
                 </ul>
               </nav>
+
+            <div class="titled">
+              <h3>Actividad</h3>
             </div>
-            
             <div class="tabla">
               <div class="titulo-tabla">
-                <h6>Agrega tus actividades</h6>
+                <h6>Tus actividades</h6>
               </div>
-              <table class="table users table-hover">
-                <tr>
-                  <td>Detalle Actividad</td>
-                  <td>Hora de inicio</td>
-                  <td>Hora de termino</td>
-                  <td>Valor de la actividad</td>
-                  <td>Fecha actividad</td>
-                </tr>
-
-                {% for evento in activities %}
+              
+              <table class="table">
+                <thead class="bg-success">
+                  <tr>
+                    <th scope="col">Nombre Actividad</th>
+                    <th scope="col">Hora de inicio</th>
+                    <th scope="col">Hora de termino</th>
+                    <th scope="col">Valor de la actividad</th>
+                    <th scope="col">Fecha</th>
+                  </tr>
+                </thead>
+                  {% for evento in activities %}
                   <tr>
                     <td>
                       {{evento.detalle_actividad}}
@@ -101,17 +100,21 @@
                     <td>
                       {{evento.fecha_actividad}}
                     </td>
-                  </tr>  
-                {% endfor %}
+                  </tr>
+                  {% endfor %}
               </table>
+
               <div>
                 <a href="{% url 'agregarActividad' %}" > 
                   <button type="submit" href="{% url 'agregarActividad' %}" class="btn btn-danger">agregar actividad</button>
                 </a>
               </div>
+              <div class="d-flex mb-3">
+                <a href="{% url 'presupuesto' %}" class="ms-auto btn btn-danger d-flex justify-content-end flex-wrap" role="button">Continuar</a>
+              </div>
             </div>
 
-        
+          </div>
       <!--Barra inferior-->
       <div class="container fixed-bottom" id="bottom-var">
         <div class="row">
