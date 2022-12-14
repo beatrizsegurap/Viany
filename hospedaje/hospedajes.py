@@ -1,4 +1,4 @@
-TIPOS_HOSPEDAJE = [
+TIPO_HOSPEDAJE = [
         "Camping",
         "Hostal",
         "Hotel",
