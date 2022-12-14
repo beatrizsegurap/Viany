@@ -72,18 +72,17 @@
       <!-- Contenido -->
       <div class="container-fluid">
         <div class="row row1">
-          <div class="col"></div>
-          <div class="col">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
             <h3 class="titled">Vuelos y transportes</h3>
           </div>
-          <div class="col"></div>
+          <div class="col-md-3"></div>
         </div>
         <div class="row">
-          <div class="col">
-            <p class="sub-title2">Selecciona los datos correspondientes a tu transporte para buscar recomendaciones</p>
-          </div>
+          
+          <p class="sub-title2">Selecciona los datos correspondientes a tu transporte para buscar recomendaciones</p>
+          
         </div>
-
 
         <div class="row">
           <form method="post">
@@ -93,33 +92,54 @@
                     <div class="col-md-12">
                       <ul> 
                         <li style='list-style:none;'>
-                          <input name="tipotransporte" class='input-itinerario'list="tiposT" type="text" placeholder="Tipo de transporte"></input>
-                          <input name="origen_transporte" class='input-itinerario'  type="name" placeholder="Desde"></input>
-                          <input name="destino_transporte" class='input-itinerario' type="name" placeholder="Hasta"></input>
-                          <input name="fecha_transporte" class='input-itinerario' type="date" placeholder="Seleccionar fecha"></input>
-                          <button id="agregarSeccion" type="submit" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#2CD4DE" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></button> 
-                        </li>
                           <datalist id='tiposT'>
                             {% for transporte in tiposT %}
                             <option value="{{transporte}}"></option>
                             {% endfor %}
                           </datalist>
+                          <datalist id='ciudades'>
+                            {% for ciudad in ciudades %}
+                            <option value="{{ciudad}}"></option>
+                            {% endfor %}
+                          </datalist>
+
+                          <select name="tipo_transporte" class="input-itinerario">
+                            <option selected>Tipo de transporte</option>
+                            {% for tipo_transporte in tiposT %}
+                            <option value="{{tipo_transporte}}">{{tipo_transporte}}</option>
+                            {% endfor %}
+
+                          </select>
+                          <select name="origen_transporte" class="input-itinerario">
+                            <option selected>Desde</option>
+                            {% for ciudad in ciudades %}
+                            <option value="{{ciudad}}">{{ciudad}}</option>
+                            {% endfor %}
+
+                          </select>
+                          <select name="destino_transporte" class="input-itinerario">
+                            <option selected>Hasta</option>
+                            {% for ciudad in ciudades %}
+                            <option value="{{ciudad}}">{{ciudad}}</option>
+                            {% endfor %}
+
+                          </select>
+                          <input name="fecha_transporte" class='input-itinerario' type="date" placeholder="Seleccionar fecha"></input>
+                          <button id="agregarSeccion" type="submit" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#2CD4DE" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></button> 
+                        </li>
+                          
+                          <li style="list-style: none;"></li>
+                          <li style="list-style: none;">
+                            <input name="hora_salida" class='input-itinerario' type="text" placeholder="Hora de salida" readonly></input>
+                            <input name="hora_llegada" class='input-itinerario' type="text" placeholder="Hora de llegada" readonly></input>
+                            <input name="valor_total_transporte" class='input-itinerario' type="number" placeholder="Valor total" readonly></input>
+                          </li>
                       </ul>
                       
                     </div>
                 </div>
             </div>
-            <div class="row" style='position: absolute;top: 80%;left:50%;'>
-              <div class="col">
-                <input name="hora_salida" class='input-itinerario' type="text" placeholder="Hora de salida" readonly></input>
-              </div>
-              <div class="col">
-                <input name="hora_llegada" class='input-itinerario' type="text" placeholder="Hora de llegada" readonly></input>
-              </div>
-              <div class="col">
-                <input name="valor_total_transporte" class='input-itinerario' type="number" placeholder="Valor total" readonly></input>
-              </div>
-            </div>
+        
             <div class="row">
               <div class="col"></div>
               <div class="col">
