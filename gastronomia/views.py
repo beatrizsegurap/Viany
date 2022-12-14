@@ -28,7 +28,7 @@ def agregarGastronomia(request):
 
 def eliminarGastronomia(request, id_gastronomia):
 
-    Egastronomia= gastronomia_por_dia.objects.get(pk = id_gastronomia)
+    Egastronomia = gastronomia_por_dia.objects.get(pk = id_gastronomia)
     Egastronomia.delete()
 
     gastronomia = gastronomia_por_dia.objects.all()

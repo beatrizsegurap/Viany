@@ -26,4 +26,12 @@ def agregarActividad (request):
     id_itineario = request.session["id_itinerario"]
 
     return render(request,'agregar-actividad.html',{'idItinerario':id_itineario})
-        
+
+def eliminarActividad(request, id_actividad):
+
+    Eactividad= actividad_por_dia.objects.get(pk = id_actividad)
+    Eactividad.delete()
+
+    actividad = actividad_por_dia.objects.all()
+
+    return render(request,"actividad.html",{"actividad_por_dia":actividad})

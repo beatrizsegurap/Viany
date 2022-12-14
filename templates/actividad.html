@@ -100,6 +100,9 @@
                     <td>
                       {{evento.fecha_actividad}}
                     </td>
+                    <td>
+                      <a class="btn btn-danger" href="{% url 'eliminarActividad' evento.id_actividad %}">Eliminar</a>
+                    </td>
                   </tr>
                   {% endfor %}
               </table>
