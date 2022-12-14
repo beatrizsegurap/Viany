@@ -70,27 +70,34 @@
       <!-- Contenido -->
       <div class="container-fluid">
         <div class="row row1">
-          <div class="col"></div>
-          <div class="col">
-            <p class="sub-title">Vuelos y transportes</p>
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <h3 class="titled">Vuelos y transportes</h3>
           </div>
-          <div class="col"></div>
+          <div class="col-md-3"></div>
         </div>
         <div class="row">
-          <div class="col">
-            <p class="sub-title2">Agrega tus datos de transporte</p>
+          <div class="col-md-8">
+            <p class="sub-title2">Agrega tus datos de transporte para el itinerario: {{ request.session.nombre_itinerario }}</p>
           </div>
-          <div class="col"></div>
-          <div class="col"> <button type="button" class="btn btn-primary btn-agregar-transporte">
+          <div class="col-md-4"> <button type="button" class="btn btn-primary btn-agregar-transporte">
             <a href="{% url 'agregarTransporte' %}" id="nav-inf-act">Agregar trasporte</a>
           </button></div>
         </div>
 
 
+        
+        {% for destino, dias in destinos.items %}
+        
         <div class="row">
-          <div class="col"> <p class="sub-title">Día 1</p> </div>
-          <div class="col"></div>
+          Destino {{ forloop.counter }}
+          <p class="sub-title">Día {{Destino}}</p>
+            {% with des=forloop.counter %}
+            Cantidad de Días: {{ dias }}
+          {% endwith %}
         </div>
+          
+        {% endfor %}
       
       <!--Barra inferior-->
       <div id="bottom-var" class=" mr-4">
