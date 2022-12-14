@@ -5,8 +5,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('menu/', views.hospedaje, name='menu-hospedaje'),
-    path('agregar/', views.agregarHospedaje, name='agregarHospedaje')
+    path('menu/', views.hospedaje, name='hospedaje'),
+    path('agregar/', views.agregarHospedaje, name='agregarHospedaje'),
+    path('menu/<int:id_hospedaje>', views.eliminarHospedaje, name= 'eliminarHospedaje' ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

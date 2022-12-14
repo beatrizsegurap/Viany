@@ -65,7 +65,7 @@
 </nav>
 
 
-        <form method="post">
+        <form method="post" action="#">
           <div class="titled">
   
             <h3>Hospedaje</h3>
@@ -77,15 +77,13 @@
                     <p class="sub-title">Selecciona los datos correspondiente a tu hospedaje para buscar recomendaciones</p>
                     <ul id="hospedajes"> 
                       <li style='list-style:none;'>
-                        <input name="tipohospedaje" class='input-itinerario'list="tiposH" type="text" placeholder="Tipo de hospedaje"></input><input class='input-itinerario' name="dia_hospedaje" type="name" placeholder="Seleccionar dia"></input><input class='input-itinerario' name="camas" type="number" placeholder="n° de camas"></input>
-                        <button id="agregarSeccion" type="submit" style="border:none;background-color:white;" ><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#2CD4DE" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/><svg></button> 
-                    </li>
+                        <input name="tipo_hospedaje" class='input-itinerario'list="tiposH" type="text" placeholder="Tipo de hospedaje"></input><input class='input-itinerario' name="fecha_hospedaje" type="date" placeholder="Seleccionar dia"></input><input class='input-itinerario' name="numero_camas" type="number" placeholder="n° de camas"></input> 
+                      </li>
                         <datalist id='tiposH'>
                           {% for hospedaje in tiposH %}
                           <option value="{{hospedaje}}"></option>
                           {% endfor %}
                         </datalist>
-                     <li style='list-style:none;'></li>
                      <li style='list-style:none;'>
                       <input name="nombre_hospedaje" class='input-itinerario' type="text" placeholder="Nombre de hospedaje"></input><input class='input-itinerario' name="direccion_hospedaje" type="name" placeholder="Dirección"></input><input class='input-itinerario' name="valor_total_hospedaje" type="number" placeholder="Valor total"></input>
                      </li>
@@ -93,7 +91,8 @@
                   </div>
               </div>
           </div>
-          <input style="position: absolute;top: 80%;left:50%;" name="submit" type="submit" value="Agregar hospedaje">
+          <input type="hidden" name="id_itinerario" value="{{ idItinerario }}" >
+          <input name="submit" type="submit" value="Agregar" class="ms-auto btn btn-danger d-flex justify-content-center flex-wrap">
         </form>
         
             
@@ -110,7 +109,7 @@
                     <tr>
                       <th><a href="{% url 'resumen' %}" id="nav-inf-act">Resumen</a></th>
                       <th><a href="{% url 'menu-transporte' %}" id="nav-inf-act">Vuelos y transportes</a></th>
-                      <th class="active"><a href="{% url 'menu-hospedaje' %}" id="nav-inf-act">Hospedaje</a></th>
+                      <th class="active"><a href="{% url 'hospedaje' %}" id="nav-inf-act">Hospedaje</a></th>
                       <th><a href="{% url 'actividad' %}" id="nav-inf-act">Actividades</a></th> 
                       <th><a href="{% url 'gastronomia' %}" id="nav-inf-act">Gastronomía</a></th>
                       <th><a href="{% url 'presupuesto' %}" id="nav-inf-act">Presupuesto</a></th>
@@ -134,13 +133,14 @@
       </footer>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+      <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+  
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
   </body>
 </html>
