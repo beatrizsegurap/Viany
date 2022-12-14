@@ -26,3 +26,11 @@ def agregarGastronomia(request):
     
     return render(request,'agregar-gastronomia.html',{'idItinerario':id_itineario})
 
+def eliminarGastronomia(request, id_gastronomia):
+
+    Egastronomia= gastronomia_por_dia.objects.get(pk = id_gastronomia)
+    Egastronomia.delete()
+
+    gastronomia = gastronomia_por_dia.objects.all()
+
+    return render(request,"gastronomia.html",{"gastronomia_por_dia":gastronomia})

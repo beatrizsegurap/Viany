@@ -100,6 +100,9 @@
                     <td>
                       {{evento.fecha_gastronomia}}
                     </td>
+                    <td>
+                      <a class="btn btn-danger" href="{% url 'eliminarGastronomia' evento.id_gastronomia   %}">Eliminar</a>
+                    </td>
                   </tr>
                   {% endfor %}
               </table>
