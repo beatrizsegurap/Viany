@@ -25,3 +25,4 @@ def agregarGastronomia(request):
     id_itineario = request.session["id_itinerario"]
     
     return render(request,'agregar-gastronomia.html',{'idItinerario':id_itineario})
+

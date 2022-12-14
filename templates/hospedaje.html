@@ -105,8 +105,7 @@
               <td>
                 {{evento.numero_camas}}
               </td>
-              <td><a class="btn btn-danger" href="{% url 'editarHospedaje' evento.id_hospedaje %}">Editar</a></td>
-              <td><a class="btn btn-danger" href="{% url '#' evento.id_hospedaje %}">Eliminar</a></td>
+              <td><a class="btn btn-danger" href="{% url 'eliminarHospedaje' evento.id_hospedaje %}">Eliminar</a></td>
             </tr>
           </tbody>  
         {% endfor %}

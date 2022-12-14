@@ -13,3 +13,4 @@ class hospedaje_por_dia(models.Model):
     valor_total_hospedaje = models.IntegerField(null=False,verbose_name="valor total")
     direccion_hospedaje  =  models.CharField(max_length=50,null=False,verbose_name="direccion hospedaje")
     fecha_hospedaje = models.DateField(verbose_name="fecha")
+    numero_camas = models.IntegerField(null=False,verbose_name="numero camas")
