@@ -1,0 +1,17 @@
+CIUDADES=["ANTOFAGASTA",
+                  "ARICA",
+                  "BALMACEDA",
+                  "CALAMA",
+                  "CASTRO CHILOE",
+                  "CONCEPCION",
+                  "COPIAPO",
+                  "IQUIQUE",
+                  "LA SERENA",
+                  "OSORNO",
+                  "PUCON",
+                  "PUERTO MONTT",
+                  "PUERTO NATALES",
+                  "PUNTA ARENAS",
+                  "RAPA NUI",
+                  "SANTIAGO DE CHILE"
+]
