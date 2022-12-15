@@ -7,9 +7,9 @@ from .models import itinerario
 from .cities import COMUNAS_CHILE
 # Create your views here.
 
-@register.filter()
-def range(min=0):
-    return range(min)
+# @register.filter()
+# def range(min=0):
+#     return range(min)
 
 def crearItinerario(request):
     comunas = COMUNAS_CHILE
@@ -19,7 +19,7 @@ def crearItinerario(request):
             id_registro = form.save()
 
             request.session['id_itinerario'] = id_registro.id_itinerario
-            print(form.data.get('nombre_itinerario'),form.data.get('ciudad_origen_itinerario'),form.data.get('fecha_inicio_itinerario'))
+            #print(form.data.get('nombre_itinerario'),form.data.get('ciudad_origen_itinerario'),form.data.get('fecha_inicio_itinerario'))
             request.session['nombre_itinerario'] = form.data.get('nombre_itinerario')
             request.session['ciudad_origen_itinerario'] = form.data.get('ciudad_origen_itinerario')
             request.session['fecha_inicio_itinerario'] = form.data.get('fecha_inicio_itinerario')
@@ -42,9 +42,9 @@ def agregarDestinos(request):
 
 
 def resumen(request):
-    for key, value in request.session.items():
-        print(key, value)
-        print(request.session['lista_destinos'])
+    #for key, value in request.session.items():
+    #    print(key, value)
+    #    print(request.session['lista_destinos'])
   
 
     res = dict(zip(request.session['lista_destinos'], request.session['lista_dias']))
