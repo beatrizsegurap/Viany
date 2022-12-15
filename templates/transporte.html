@@ -80,9 +80,7 @@
           <div class="col-md-8">
             <p class="sub-title2">Agrega tus datos de transporte para el itinerario: {{ request.session.nombre_itinerario }}</p>
           </div>
-          <div class="col-md-4"> <button type="button" class="btn btn-primary btn-agregar-transporte">
-            <a href="{% url 'agregarTransporte' %}" id="nav-inf-act">Agregar trasporte</a>
-          </button></div>
+          <div class="col-md-4"> </div>
         </div>
 
 
@@ -90,11 +88,22 @@
         {% for destino, dias in destinos.items %}
         
         <div class="row">
-          Destino {{ forloop.counter }}
-          <p class="sub-title">Día {{Destino}}</p>
-            {% with des=forloop.counter %}
-            Cantidad de Días: {{ dias }}
-          {% endwith %}
+          <div class="col-md-2">
+            <p class="sub-title">Día {{ dias }}</p>
+          </div>
+           
+            {% if dias == 1 %}
+            <div class="col-md-3">Desde: {{origen}}</div>
+            {% else %}
+            <div class="col-md-3">Desde: {{destino}}</div>
+            {% endif %}
+          <div class="col-md-3">Hasta: {{destino}}</div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-agregar-transporte">
+              <a href="{% url 'agregarTransporte' %}" id="nav-inf-act">Agregar trasporte</a>
+            </button>
+          </div>
+            
         </div>
           
         {% endfor %}

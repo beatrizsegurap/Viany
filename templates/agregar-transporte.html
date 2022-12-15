@@ -103,21 +103,21 @@
                             {% endfor %}
                           </datalist>
 
-                          <select name="tipo_transporte" class="input-itinerario">
+                          <select name="tipo_de_transporte" class="input-itinerario">
                             <option selected>Tipo de transporte</option>
                             {% for tipo_transporte in tiposT %}
                             <option value="{{tipo_transporte}}">{{tipo_transporte}}</option>
                             {% endfor %}
 
                           </select>
-                          <select name="origen_transporte" class="input-itinerario">
+                          <select name="ciudad_inicio_transporte" class="input-itinerario">
                             <option selected>Desde</option>
                             {% for ciudad in ciudades %}
                             <option value="{{ciudad}}">{{ciudad}}</option>
                             {% endfor %}
 
                           </select>
-                          <select name="destino_transporte" class="input-itinerario">
+                          <select name="ciudad_destino_transporte" class="input-itinerario">
                             <option selected>Hasta</option>
                             {% for ciudad in ciudades %}
                             <option value="{{ciudad}}">{{ciudad}}</option>
@@ -130,9 +130,9 @@
                           
                           <li style="list-style: none;"></li>
                           <li style="list-style: none;">
-                            <input name="hora_salida" class='input-itinerario' type="text" placeholder="Hora de salida" readonly></input>
-                            <input name="hora_llegada" class='input-itinerario' type="text" placeholder="Hora de llegada" readonly></input>
-                            <input name="valor_total_transporte" class='input-itinerario' type="number" placeholder="Valor total" readonly></input>
+                            <input name="hora_salida_transporte" class='input-itinerario' type="time" placeholder="Hora de salida" ></input>
+                            <input name="hora_llegada_transporte" class='input-itinerario' type="time" placeholder="Hora de llegada" ></input>
+                            <input name="valor_total_transporte" class='input-itinerario' type="number" placeholder="Valor total" ></input>
                           </li>
                       </ul>
                       

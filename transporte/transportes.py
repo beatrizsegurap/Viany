@@ -1,5 +1,5 @@
 TIPOS_TRANSPORTE = [
-    "Avión",
+    "Avion",
     "Bus",
     "Auto particular"
 ]
