@@ -47,32 +47,32 @@
 
             
             <!--Barra lateral izquierda  -->
-            <div class="wrapper">
-              <nav id="sidebar" class="">
-                <ul class="list-unstyled components">
-                    <li>
-                        <a href="{% url 'dashboarduser'%}">Inicio</a>
-                    </li>
-                    <li class="active">
-                        <a href="{% url 'newItinerario'%}">Crear itinerario</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu">Mis itinerarios</a>
-                    </li>
-                    <li>
-                      <a href="#pageSubmenu">Recomendaciones</a>
-                  </li>
-                </ul>
-              </nav>
+      <div class="wrapper">
+        <nav id="sidebar" class="">
+          <ul class="list-unstyled components">
+              <li>
+                  <a href="{% url 'dashboarduser'%}">Inicio</a>
+              </li>
+              <li class="active">
+                  <a href="{% url 'newItinerario'%}">Crear itinerario</a>
+              </li>
+              <li>
+                  <a href="#pageSubmenu">Mis itinerarios</a>
+              </li>
+              <li>
+                  <a href="#pageSubmenu">Recomendaciones</a>
+              </li>
+          </ul>
+        </nav>
 
             <div class="titled">
               <h3>Actividad</h3>
             </div>
+            {% csrf_token %}
             <div class="tabla">
               <div class="titulo-tabla">
-                <h6>Tus actividades</h6>
+                <p>Tus actividades</p>
               </div>
-              
               <table class="table width:max-content">
                 <thead class="bg-success">
                   <tr>

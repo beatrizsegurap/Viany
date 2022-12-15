@@ -31,6 +31,6 @@ def eliminarGastronomia(request, id_gastronomia):
     Egastronomia = gastronomia_por_dia.objects.get(pk = id_gastronomia)
     Egastronomia.delete()
 
-    gastronomia = gastronomia_por_dia.objects.all()
-
-    return render(request,"gastronomia.html",{"gastronomia_por_dia":gastronomia})
+    model = gastronomia_por_dia.objects.filter(id_itinerario_id__exact = int(request.session["id_itinerario"]) )
+    context = {'gastronomy':model}
+    return render(request,"gastronomia.html",context)

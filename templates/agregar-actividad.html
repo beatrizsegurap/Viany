@@ -90,33 +90,32 @@
 
 
 
-      <form method="post" action="#">
-        <div class="titled">
+  <form method="post" action="#">
+    <div class="titled">
+      <h3>Actividades</h3>
+    </div>
+      {% csrf_token %}
+    <div class="col py-2">
+        <div class="row">
+            <div class="col-md-12">
+              <p class="sub-title">Busca recomendaciones de actividades en tu destino</p>
+              <ul id="actividad"> 
 
-          <h3>Actividades</h3>
-        </div>
-          {% csrf_token %}
-        <div class="col py-2">
-            <div class="row">
-                <div class="col-md-12">
-                  <p class="sub-title">Busca recomendaciones de actividades en tu destino</p>
-                  <ul id="actividad"> 
-
-                    <li style='list-style:none;'>
-                        <input name="fecha_actividad" class='input-itinerario' type="date" placeholder="seleccionar dia">
-                    </li>
+                <li style='list-style:none;'>
+                    <input name="fecha_actividad" class='input-itinerario' type="date" placeholder="seleccionar dia">
+                </li>
                     
-                   <li style='list-style:none;'>
-                    <input name="detalle_actividad" class='input-itinerario' type="text" placeholder=" Nombre"></input><input class='input-itinerario' name="hora_inicio_actividad" type="time" placeholder="Hora Inicio"></input><input class='input-itinerario' name="hora_final_actividad" type="time" placeholder="Termino de hora"></input><input class='input-itinerario' name="valor_total_actividad" type="number" placeholder=" Valor total"></input>
-                   </li>
-                  </ul>
-                </div>
+                <li style='list-style:none;'>
+                <input name="detalle_actividad" class='input-itinerario' type="text" placeholder=" Nombre"></input><input class='input-itinerario' name="hora_inicio_actividad" type="time" placeholder="Hora Inicio"></input><input class='input-itinerario' name="hora_final_actividad" type="time" placeholder="Termino de hora"></input><input class='input-itinerario' name="valor_total_actividad" type="number" placeholder=" Valor total"></input>
+                </li>
+              </ul>
             </div>
         </div>
-        <input type="hidden" name="id_itinerario" value="{{ idItinerario }}" >
-        <input name="submit" type="submit" value="Agregar" class="ms-auto btn btn-danger d-flex justify-content-center flex-wrap">
+    </div>
+    <input type="hidden" name="id_itinerario" value="{{ idItinerario }}" >
+    <input name="submit" type="submit" value="Agregar" class="ms-auto btn btn-danger d-flex justify-content-center flex-wrap">
         <!--  <input style="position: absolute;top: 80%;left:70%;" name="submit" type="submit" value="Continuar">  -->
-      </form>
+    </form>
       
           
       </div>

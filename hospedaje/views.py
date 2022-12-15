@@ -29,8 +29,11 @@ def agregarHospedaje (request):
     return render(request,'agregar-hospedaje.html', {'idItinerario':id_itineario, 'tiposH':TIPO_HOSPEDAJE})
 
 def eliminarHospedaje (request, id_hospedaje):
+
     hpj= hospedaje_por_dia.objects.get(pk=id_hospedaje)
     hpj.delete()
-    hospedajes = hospedaje_por_dia.objects.all()
 
-    return render(request,"hospedaje.html",{"hospedaje_por_dia":hospedajes})
+    model = hospedaje_por_dia.objects.filter(id_itinerario_id__exact = int(request.session["id_itinerario"]))
+    context= {'lodging':model}
+
+    return render(request,"hospedaje.html",context)

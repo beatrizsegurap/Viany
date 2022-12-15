@@ -32,6 +32,7 @@ def eliminarActividad(request, id_actividad):
     Eactividad= actividad_por_dia.objects.get(pk = id_actividad)
     Eactividad.delete()
 
-    actividad = actividad_por_dia.objects.all()
+    model = actividad_por_dia.objects.filter(id_itinerario_id__exact = int(request.session["id_itinerario"]) )
+    context = {'activities':model}
 
-    return render(request,"actividad.html",{"actividad_por_dia":actividad})
+    return render(request,"actividad.html",context)
